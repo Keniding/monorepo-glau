@@ -27,6 +27,7 @@
       },
       "configurations": {
         "production": {
+          "baseHref": "/landing/browser/",
           "budgets": [
             {
               "type": "initial",
@@ -42,6 +43,7 @@
           "outputHashing": "all"
         },
         "development": {
+          "baseHref": "/",
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true
