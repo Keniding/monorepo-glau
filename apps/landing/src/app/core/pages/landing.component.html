@@ -1,1 +1,388 @@
-<p>landing works!</p>
+<!-- Hero Section -->
+<section class="hero-section relative">
+  <div class="container mx-auto px-4 py-16 relative z-10">
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="md:w-1/2 animate-in" style="animation-delay: 0.2s;">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900">
+          Detección de <span class="text-primary">Glaucoma</span> con Inteligencia Artificial
+        </h1>
+        <p class="text-lg text-neutral-700 mb-8 max-w-lg">
+          Sistema web con arquitectura ResNet50 mediante Transfer Learning para la detección y seguimiento de glaucoma a través de imágenes de retina.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <p-button label="Comenzar Ahora" icon="pi pi-play" styleClass="p-button-primary text-lg"></p-button>
+          <p-button label="Saber Más" icon="pi pi-info-circle" styleClass="p-button-outlined text-lg"></p-button>
+        </div>
+      </div>
+      <div class="md:w-1/2 mt-10 md:mt-0 animate-in" style="animation-delay: 0.4s;">
+        <div class="relative w-full rounded-xl shadow-lg overflow-hidden">
+          <!-- Skeleton mientras carga la imagen -->
+          <p-skeleton height="400px" width="100%" *ngIf="shouldShowSkeleton('assets/images/retina-scan.png')" styleClass="rounded-xl"></p-skeleton>
+
+          <!-- Imagen cuando está cargada -->
+          <p-image *ngIf="isImageReady('assets/images/retina-scan.png')"
+                   src="assets/images/retina-scan.png"
+                   alt="Imagen de retina con análisis de IA"
+                   width="100%"
+                   [preview]="true"
+                   class="rounded-xl"
+                   (onImageError)="handleImageError('assets/images/retina-scan.png', $event)">
+            <ng-template pTemplate="indicator">
+              <i class="pi pi-search"></i>
+            </ng-template>
+          </p-image>
+
+          <!-- Imagen de reemplazo en caso de error -->
+          <div *ngIf="shouldShowFallback('assets/images/retina-scan.png')" class="bg-neutral-200 rounded-xl flex items-center justify-center" style="height: 400px;">
+            <i class="pi pi-image text-neutral-400" style="font-size: 3rem;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="glass-card p-6 animate-in" style="animation-delay: 0.2s;">
+        <h3 class="text-4xl font-bold text-primary mb-2">98%</h3>
+        <p class="text-neutral-600">Precisión en detección</p>
+      </div>
+      <div class="glass-card p-6 animate-in" style="animation-delay: 0.3s;">
+        <h3 class="text-4xl font-bold text-secondary mb-2">+10K</h3>
+        <p class="text-neutral-600">Imágenes analizadas</p>
+      </div>
+      <div class="glass-card p-6 animate-in" style="animation-delay: 0.4s;">
+        <h3 class="text-4xl font-bold text-accent mb-2">95%</h3>
+        <p class="text-neutral-600">Detección temprana</p>
+      </div>
+      <div class="glass-card p-6 animate-in" style="animation-delay: 0.5s;">
+        <h3 class="text-4xl font-bold text-warning mb-2">-40%</h3>
+        <p class="text-neutral-600">Tiempo de diagnóstico</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section (Bento Grid) -->
+<section class="py-16 bg-neutral-50">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title text-3xl font-bold text-center mb-16">Características Principales</h2>
+
+    <div class="bento-grid">
+      <!-- Feature 1: Large Card -->
+      <div class="glass-card p-6 col-span-12 md:col-span-8 row-span-2 animate-in" style="animation-delay: 0.2s;">
+        <div class="flex flex-col h-full">
+          <div class="mb-4">
+            <p-chip label="IA Avanzada" icon="pi pi-brain" styleClass="mr-2"></p-chip>
+            <p-chip label="ResNet50" icon="pi pi-cog" styleClass="mr-2"></p-chip>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Arquitectura de IA Híbrida</h3>
+          <div class="flex-grow">
+            <p class="text-neutral-700 mb-4">
+              Nuestro sistema implementa un modelo híbrido que combina ResNet50 para análisis de imagen completa y MobileNetV3Small para regiones específicas, alcanzando una precisión superior al 98% en la detección de glaucoma.
+            </p>
+            <div class="h-64">
+              <p-chart type="line" [data]="chartData" [options]="chartOptions" height="100%"></p-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="glass-card p-6 col-span-12 md:col-span-4 animate-in" style="animation-delay: 0.3s;">
+        <div class="mb-4">
+          <p-chip label="Microservicios" icon="pi pi-server" styleClass="mr-2"></p-chip>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Arquitectura Escalable</h3>
+        <p class="text-neutral-700">
+          Backend basado en microservicios con Spring Framework, garantizando alta disponibilidad y escalabilidad para entornos clínicos.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="glass-card p-6 col-span-12 md:col-span-4 animate-in" style="animation-delay: 0.4s;">
+        <div class="mb-4">
+          <p-chip label="UI/UX" icon="pi pi-desktop" styleClass="mr-2"></p-chip>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Interfaz Intuitiva</h3>
+        <p class="text-neutral-700">
+          Experiencia de usuario diferenciada según el perfil (paciente o especialista), con visualizaciones avanzadas de resultados.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="glass-card p-6 col-span-12 md:col-span-4 animate-in" style="animation-delay: 0.5s;">
+        <div class="mb-4">
+          <p-chip label="Seguridad" icon="pi pi-shield" styleClass="mr-2"></p-chip>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Datos Protegidos</h3>
+        <p class="text-neutral-700">
+          Implementación de estándares de seguridad para proteger la información médica sensible conforme a regulaciones.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="glass-card p-6 col-span-12 md:col-span-4 animate-in" style="animation-delay: 0.6s;">
+        <div class="mb-4">
+          <p-chip label="Análisis" icon="pi pi-chart-bar" styleClass="mr-2"></p-chip>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Seguimiento Temporal</h3>
+        <p class="text-neutral-700">
+          Monitoreo de la progresión del glaucoma a lo largo del tiempo con visualización de tendencias y alertas automáticas.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="glass-card p-6 col-span-12 md:col-span-8 animate-in" style="animation-delay: 0.7s;">
+        <div class="mb-4">
+          <p-chip label="Feedback" icon="pi pi-sync" styleClass="mr-2"></p-chip>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Aprendizaje Incremental</h3>
+        <p class="text-neutral-700">
+          Sistema de retroalimentación bidireccional que permite a los especialistas validar y mejorar los diagnósticos, optimizando continuamente la precisión del modelo mediante aprendizaje incremental.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title text-3xl font-bold text-center mb-16">Cómo Funciona</h2>
+
+    <div class="flex flex-col md:flex-row items-start">
+      <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+        <div class="glass-card p-6 animate-in" style="animation-delay: 0.2s;">
+          <p-timeline [value]="timelineEvents" align="alternate">
+            <ng-template pTemplate="content" let-event>
+              <div class="glass-card p-4">
+                <h4 class="text-lg font-bold mb-2">{{event.status}}</h4>
+                <p class="text-sm text-neutral-600 mb-1">{{event.date}}</p>
+                <p class="text-neutral-700">{{event.description}}</p>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="opposite" let-event>
+              <p-tag [value]="event.status" [severity]="getSeverity(event.status)"></p-tag>
+            </ng-template>
+          </p-timeline>
+        </div>
+      </div>
+
+      <div class="md:w-1/2">
+        <div class="glass-card p-6 animate-in" style="animation-delay: 0.4s;">
+          <h3 class="text-2xl font-bold mb-6">Proceso de Detección</h3>
+          <ol class="space-y-6">
+            <li class="flex items-start">
+              <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">1</div>
+              <div>
+                <h4 class="font-bold mb-2">Carga de Imágenes</h4>
+                <p class="text-neutral-700">El sistema acepta imágenes retinianas en diversos formatos, normalizándolas para el análisis.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">2</div>
+              <div>
+                <h4 class="font-bold mb-2">Preprocesamiento</h4>
+                <p class="text-neutral-700">Las imágenes son mejoradas mediante técnicas avanzadas como CLAHE y reducción de ruido.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">3</div>
+              <div>
+                <h4 class="font-bold mb-2">Segmentación del Disco Óptico</h4>
+                <p class="text-neutral-700">Identificación precisa del disco óptico mediante U-Net para extraer la región de interés.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">4</div>
+              <div>
+                <h4 class="font-bold mb-2">Análisis con Modelo Híbrido</h4>
+                <p class="text-neutral-700">Procesamiento paralelo con ResNet50 y MobileNetV3Small para maximizar la precisión diagnóstica.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">5</div>
+              <div>
+                <h4 class="font-bold mb-2">Visualización de Resultados</h4>
+                <p class="text-neutral-700">Presentación de diagnósticos con mapas de calor y métricas cuantitativas como CDR.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-16 bg-neutral-50">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title text-3xl font-bold text-center mb-16">Equipo de Investigación</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Miembro 1 -->
+      <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.2s;">
+        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
+          <!-- Skeleton mientras carga la imagen -->
+          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member1.jpg')"></p-skeleton>
+
+          <!-- Imagen cuando está cargada -->
+          <img *ngIf="isImageReady('assets/images/team/member1.jpg')"
+               src="assets/images/team/member1.jpg"
+               alt="Luis Renato Collantes Ortega"
+               class="w-full h-full object-cover">
+
+          <!-- Imagen de reemplazo en caso de error -->
+          <div *ngIf="shouldShowFallback('assets/images/team/member1.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
+            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Luis Renato Collantes Ortega</h3>
+        <p class="text-neutral-600 mb-3">Investigador Principal</p>
+        <p class="text-sm text-neutral-500">U20214296</p>
+      </div>
+
+      <!-- Miembro 2 -->
+      <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.3s;">
+        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
+          <!-- Skeleton mientras carga la imagen -->
+          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member2.jpg')"></p-skeleton>
+
+          <!-- Imagen cuando está cargada -->
+          <img *ngIf="isImageReady('assets/images/team/member2.jpg')"
+               src="assets/images/team/member2.jpg"
+               alt="Henry Keniding Tarazona Lazaro"
+               class="w-full h-full object-cover">
+
+          <!-- Imagen de reemplazo en caso de error -->
+          <div *ngIf="shouldShowFallback('assets/images/team/member2.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
+            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Henry Keniding Tarazona Lazaro</h3>
+        <p class="text-neutral-600 mb-3">Investigador</p>
+        <p class="text-sm text-neutral-500">U20310552</p>
+      </div>
+
+      <!-- Miembro 3 -->
+      <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.4s;">
+        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
+          <!-- Skeleton mientras carga la imagen -->
+          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member3.jpg')"></p-skeleton>
+
+          <!-- Imagen cuando está cargada -->
+          <img *ngIf="isImageReady('assets/images/team/member3.jpg')"
+               src="assets/images/team/member3.jpg"
+               alt="Juan de Dios Segura Rojas"
+               class="w-full h-full object-cover">
+
+          <!-- Imagen de reemplazo en caso de error -->
+          <div *ngIf="shouldShowFallback('assets/images/team/member3.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
+            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Juan de Dios Segura Rojas</h3>
+        <p class="text-neutral-600 mb-3">Docente Asesor</p>
+        <p class="text-sm text-neutral-500">Universidad de Lima</p>
+      </div>
+
+      <!-- Miembro 4 -->
+      <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.5s;">
+        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
+          <!-- Skeleton mientras carga la imagen -->
+          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member4.jpg')"></p-skeleton>
+
+          <!-- Imagen cuando está cargada -->
+          <img *ngIf="isImageReady('assets/images/team/member4.jpg')"
+               src="assets/images/team/member4.jpg"
+               alt="Carlos Alberto Sotomayor Beltran"
+               class="w-full h-full object-cover">
+
+          <!-- Imagen de reemplazo en caso de error -->
+          <div *ngIf="shouldShowFallback('assets/images/team/member4.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
+            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Carlos Alberto Sotomayor Beltran</h3>
+        <p class="text-neutral-600 mb-3">Docente Asesor</p>
+        <p class="text-sm text-neutral-500">Universidad de Lima</p>
+      </div>
+    </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-primary to-accent text-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-in" style="animation-delay: 0.2s;">Comienza a detectar el glaucoma de forma temprana</h2>
+    <p class="text-lg mb-8 max-w-2xl mx-auto animate-in" style="animation-delay: 0.3s;">
+      Únete a la revolución en el diagnóstico oftalmológico. Nuestro sistema combina la precisión de la inteligencia artificial con la experiencia médica para salvar la visión de millones de personas.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 animate-in" style="animation-delay: 0.4s;">
+      <p-button label="Solicitar Demostración" icon="pi pi-video" styleClass="p-button-lg"></p-button>
+      <p-button label="Contactar Equipo" icon="pi pi-envelope" styleClass="p-button-outlined p-button-lg" [outlined]="true"></p-button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-neutral-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">GlaucomaVision AI</h3>
+        <p class="text-neutral-400 mb-4">
+          Sistema web con arquitectura ResNet50 mediante Transfer Learning para la detección y seguimiento de glaucoma.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+            <i class="pi pi-github text-xl"></i>
+          </a>
+          <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+            <i class="pi pi-linkedin text-xl"></i>
+          </a>
+          <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+            <i class="pi pi-twitter text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold mb-4">Enlaces Rápidos</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">Inicio</a></li>
+          <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">Características</a></li>
+          <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">Equipo</a></li>
+          <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">Contacto</a></li>
+          <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">Documentación</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold mb-4">Contacto</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="pi pi-map-marker text-secondary mr-3 mt-1"></i>
+            <span class="text-neutral-400">Universidad de Lima, Av. Javier Prado Este 4600, Santiago de Surco</span>
+          </li>
+          <li class="flex items-start">
+            <i class="pi pi-envelope text-secondary mr-3 mt-1"></i>
+            <span class="text-neutral-400">glaucomavision&#64;ulima.edu.pe</span>
+          </li>
+          <li class="flex items-start">
+            <i class="pi pi-phone text-secondary mr-3 mt-1"></i>
+            <span class="text-neutral-400">+51 1 437-6767</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-neutral-800 mt-12 pt-8 text-center text-neutral-500">
+      <p>© 2025 GlaucomaVision AI. Universidad de Lima. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
