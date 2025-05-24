@@ -34,7 +34,7 @@ export class LandingComponent implements OnInit {
   timelineEvents: any[] | undefined;
   imagesLoaded: {[key: string]: boolean} = {};
   imagesError: {[key: string]: boolean} = {};
-  loadingTimeout: number = 3000; // Tiempo máximo de espera para cargar imágenes
+  loadingTimeout = 3000;
 
   // Lista de imágenes para controlar su carga
   imageUrls = [
