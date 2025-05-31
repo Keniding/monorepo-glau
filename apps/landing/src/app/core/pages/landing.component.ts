@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -14,7 +14,6 @@ import { TimelineModule } from 'primeng/timeline';
   selector: 'app-landing',
   standalone: true,
   imports: [
-    CommonModule,
     ButtonModule,
     CardModule,
     SkeletonModule,
@@ -23,8 +22,8 @@ import { TimelineModule } from 'primeng/timeline';
     ImageModule,
     ChartModule,
     TagModule,
-    TimelineModule,
-  ],
+    TimelineModule
+],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
 })
