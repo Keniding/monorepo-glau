@@ -17,25 +17,31 @@
       <div class="md:w-1/2 mt-10 md:mt-0 animate-in" style="animation-delay: 0.4s;">
         <div class="relative w-full rounded-xl shadow-lg overflow-hidden">
           <!-- Skeleton mientras carga la imagen -->
-          <p-skeleton height="400px" width="100%" *ngIf="shouldShowSkeleton('assets/images/retina-scan.png')" styleClass="rounded-xl"></p-skeleton>
+          @if (shouldShowSkeleton('assets/images/retina-scan.png')) {
+            <p-skeleton height="400px" width="100%" styleClass="rounded-xl"></p-skeleton>
+          }
 
           <!-- Imagen cuando está cargada -->
-          <p-image *ngIf="isImageReady('assets/images/retina-scan.png')"
-                   src="assets/images/retina-scan.png"
-                   alt="Imagen de retina con análisis de IA"
-                   width="100%"
-                   [preview]="true"
-                   class="rounded-xl"
-                   (onImageError)="handleImageError('assets/images/retina-scan.png', $event)">
-            <ng-template pTemplate="indicator">
-              <i class="pi pi-search"></i>
-            </ng-template>
-          </p-image>
+          @if (isImageReady('assets/images/retina-scan.png')) {
+            <p-image
+              src="assets/images/retina-scan.png"
+              alt="Imagen de retina con análisis de IA"
+              width="100%"
+              [preview]="true"
+              class="rounded-xl"
+              (onImageError)="handleImageError('assets/images/retina-scan.png', $event)">
+              <ng-template pTemplate="indicator">
+                <i class="pi pi-search"></i>
+              </ng-template>
+            </p-image>
+          }
 
           <!-- Imagen de reemplazo en caso de error -->
-          <div *ngIf="shouldShowFallback('assets/images/retina-scan.png')" class="bg-neutral-200 rounded-xl flex items-center justify-center" style="height: 400px;">
-            <i class="pi pi-image text-neutral-400" style="font-size: 3rem;"></i>
-          </div>
+          @if (shouldShowFallback('assets/images/retina-scan.png')) {
+            <div class="bg-neutral-200 rounded-xl flex items-center justify-center" style="height: 400px;">
+              <i class="pi pi-image text-neutral-400" style="font-size: 3rem;"></i>
+            </div>
+          }
         </div>
       </div>
     </div>
@@ -228,18 +234,24 @@
       <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.2s;">
         <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
           <!-- Skeleton mientras carga la imagen -->
-          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member1.jpg')"></p-skeleton>
+          @if (shouldShowSkeleton('assets/images/team/member1.jpg')) {
+            <p-skeleton shape="circle" width="100%" height="100%"></p-skeleton>
+          }
 
           <!-- Imagen cuando está cargada -->
-          <img *ngIf="isImageReady('assets/images/team/member1.jpg')"
-               src="assets/images/team/member1.jpg"
-               alt="Luis Renato Collantes Ortega"
-               class="w-full h-full object-cover">
+          @if (isImageReady('assets/images/team/member1.jpg')) {
+            <img
+              src="assets/images/team/member1.jpg"
+              alt="Luis Renato Collantes Ortega"
+              class="w-full h-full object-cover">
+          }
 
           <!-- Imagen de reemplazo en caso de error -->
-          <div *ngIf="shouldShowFallback('assets/images/team/member1.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
-            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
-          </div>
+          @if (shouldShowFallback('assets/images/team/member1.jpg')) {
+            <div class="w-full h-full flex items-center justify-center bg-neutral-300">
+              <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+            </div>
+          }
         </div>
         <h3 class="text-xl font-bold mb-1">Luis Renato Collantes Ortega</h3>
         <p class="text-neutral-600 mb-3">Investigador Principal</p>
@@ -250,18 +262,24 @@
       <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.3s;">
         <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
           <!-- Skeleton mientras carga la imagen -->
-          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member2.jpg')"></p-skeleton>
+          @if (shouldShowSkeleton('assets/images/team/member2.jpg')) {
+            <p-skeleton shape="circle" width="100%" height="100%"></p-skeleton>
+          }
 
           <!-- Imagen cuando está cargada -->
-          <img *ngIf="isImageReady('assets/images/team/member2.jpg')"
-               src="assets/images/team/member2.jpg"
-               alt="Henry Keniding Tarazona Lazaro"
-               class="w-full h-full object-cover">
+          @if (isImageReady('assets/images/team/member2.jpg')) {
+            <img
+              src="assets/images/team/member2.jpg"
+              alt="Henry Keniding Tarazona Lazaro"
+              class="w-full h-full object-cover">
+          }
 
           <!-- Imagen de reemplazo en caso de error -->
-          <div *ngIf="shouldShowFallback('assets/images/team/member2.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
-            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
-          </div>
+          @if (shouldShowFallback('assets/images/team/member2.jpg')) {
+            <div class="w-full h-full flex items-center justify-center bg-neutral-300">
+              <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+            </div>
+          }
         </div>
         <h3 class="text-xl font-bold mb-1">Henry Keniding Tarazona Lazaro</h3>
         <p class="text-neutral-600 mb-3">Investigador</p>
@@ -272,18 +290,24 @@
       <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.4s;">
         <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
           <!-- Skeleton mientras carga la imagen -->
-          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member3.jpg')"></p-skeleton>
+          @if (shouldShowSkeleton('assets/images/team/member3.jpg')) {
+            <p-skeleton shape="circle" width="100%" height="100%"></p-skeleton>
+          }
 
           <!-- Imagen cuando está cargada -->
-          <img *ngIf="isImageReady('assets/images/team/member3.jpg')"
-               src="assets/images/team/member3.jpg"
-               alt="Juan de Dios Segura Rojas"
-               class="w-full h-full object-cover">
+          @if (isImageReady('assets/images/team/member3.jpg')) {
+            <img
+              src="assets/images/team/member3.jpg"
+              alt="Juan de Dios Segura Rojas"
+              class="w-full h-full object-cover">
+          }
 
           <!-- Imagen de reemplazo en caso de error -->
-          <div *ngIf="shouldShowFallback('assets/images/team/member3.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
-            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
-          </div>
+          @if (shouldShowFallback('assets/images/team/member3.jpg')) {
+            <div class="w-full h-full flex items-center justify-center bg-neutral-300">
+              <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+            </div>
+          }
         </div>
         <h3 class="text-xl font-bold mb-1">Juan de Dios Segura Rojas</h3>
         <p class="text-neutral-600 mb-3">Docente Asesor</p>
@@ -294,25 +318,31 @@
       <div class="glass-card p-6 text-center animate-in" style="animation-delay: 0.5s;">
         <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-neutral-200 relative">
           <!-- Skeleton mientras carga la imagen -->
-          <p-skeleton shape="circle" width="100%" height="100%" *ngIf="shouldShowSkeleton('assets/images/team/member4.jpg')"></p-skeleton>
+          @if (shouldShowSkeleton('assets/images/team/member4.jpg')) {
+            <p-skeleton shape="circle" width="100%" height="100%"></p-skeleton>
+          }
 
           <!-- Imagen cuando está cargada -->
-          <img *ngIf="isImageReady('assets/images/team/member4.jpg')"
-               src="assets/images/team/member4.jpg"
-               alt="Carlos Alberto Sotomayor Beltran"
-               class="w-full h-full object-cover">
+          @if (isImageReady('assets/images/team/member4.jpg')) {
+            <img
+              src="assets/images/team/member4.jpg"
+              alt="Carlos Alberto Sotomayor Beltran"
+              class="w-full h-full object-cover">
+          }
 
           <!-- Imagen de reemplazo en caso de error -->
-          <div *ngIf="shouldShowFallback('assets/images/team/member4.jpg')" class="w-full h-full flex items-center justify-center bg-neutral-300">
-            <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
-          </div>
+          @if (shouldShowFallback('assets/images/team/member4.jpg')) {
+            <div class="w-full h-full flex items-center justify-center bg-neutral-300">
+              <i class="pi pi-user text-neutral-400" style="font-size: 2rem;"></i>
+            </div>
+          }
         </div>
         <h3 class="text-xl font-bold mb-1">Carlos Alberto Sotomayor Beltran</h3>
         <p class="text-neutral-600 mb-3">Docente Asesor</p>
         <p class="text-sm text-neutral-500">Universidad Tecnológica del Perú</p>
       </div>
     </div>
-    </div>
+  </div>
 </section>
 
 <!-- CTA Section -->
