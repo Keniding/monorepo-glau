@@ -1,0 +1,79 @@
+/* ----------------------------------------------------
+   REGLA 60-30-10 (colores)
+   ---------------------------------------------------- */
+
+/* 1) Colores Primarios (60%) — Azul Médico */
+$primary-50:   #F8FAFF;  // Fondo claro
+$primary-100:  #E8F2FF;  // Secciones
+$primary-500:  #2E5BBA;  // Azul médico confiable
+$primary-700:  #1E3A8A;  // Azul oscuro
+
+/* 2) Colores Neutros (30%) — Gris Neutro */
+$gray-50:   #F9FAFB;  // Fondo alternativo
+$gray-100:  #E5E7EB;  // Bordes / separadores
+$gray-500:  #6B7280;  // Texto neutro
+$gray-900:  #111827;  // Texto oscuro
+
+/* 3) Colores de Estado (10%) — Sistema de Estados */
+$success: #10B981;   // Éxito / Normal
+$warning: #F59E0B;   // Advertencia
+$error:   #EF4444;   // Peligro / Crítico
+$info:    #3B82F6;   // Información
+
+/* ----------------------------------------------------
+   Exportar como CSS Custom Properties (para que puedan usarse en tiempo de ejecución)
+   ---------------------------------------------------- */
+:root {
+  /* Primarios 60% */
+  --primary-50:  #{$primary-50};
+  --primary-100: #{$primary-100};
+  --primary-500: #{$primary-500};
+  --primary-700: #{$primary-700};
+
+  /* Neutros 30% */
+  --gray-50:   #{$gray-50};
+  --gray-100:  #{$gray-100};
+  --gray-500:  #{$gray-500};
+  --gray-900:  #{$gray-900};
+
+  /* Estados 10% */
+  --success: #{$success};
+  --warning: #{$warning};
+  --error:   #{$error};
+  --info:    #{$info};
+
+  /* Backgrounds sugeridos */
+  --bg-primary:    #{$primary-50};   /* 60% dominante */
+  --bg-secondary:  #FFFFFF;          /* Blanco para áreas grandes */
+  --bg-accent:     #{$primary-100};  /* 10% de acento */
+}
+
+/* Ejemplo de mixins / utilitarias de espaciado (sistema de 8px) */
+$spacings: (
+  1: 8px,
+  2: 16px,
+  3: 24px,
+  4: 32px,
+  6: 48px,
+  8: 64px
+);
+
+@each $key, $val in $spacings {
+  .m-#{$key} {
+    margin: $val !important;
+  }
+  .p-#{$key} {
+    padding: $val !important;
+  }
+}
+
+/* Tipografía base sugerida */
+$font-family-sans: 'Inter', sans-serif;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+/* Ejemplo de variables tipográficas */
+$h1-size: 2rem;
+$h2-size: 1.5rem;
+$body-size: 1rem;
