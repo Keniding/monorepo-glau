@@ -1,0 +1,488 @@
+{
+  "monorepo": {
+    "name": "monorepo-glau",
+    "description": "Monorepo con arquitectura hexagonal y microfrontends",
+    "version": "1.0.0",
+    "workspace": {
+      "npmScope": "@glau",
+      "packageManager": "bun"
+    }
+  },
+  "applications": {
+    "hosts": [
+      {
+        "name": "shell",
+        "type": "host",
+        "directory": "apps/hosts/shell",
+        "config": {
+          "addTailwind": true,
+          "e2eTestRunner": "none",
+          "style": "scss",
+          "unitTestRunner": "none"
+        },
+        "components": [
+          {
+            "name": "mainlayout",
+            "path": "src/app/layout/components"
+          },
+          {
+            "name": "header",
+            "path": "src/app/layout/components"
+          },
+          {
+            "name": "sidebar",
+            "path": "src/app/layout/components"
+          },
+          {
+            "name": "footer",
+            "path": "src/app/layout/components"
+          }
+        ],
+        "services": [
+          {
+            "name": "auth",
+            "path": "src/app/core/services"
+          },
+          {
+            "name": "layout",
+            "path": "src/app/layout/services"
+          },
+          {
+            "name": "blockorchestrator",
+            "path": "src/app/blocks"
+          }
+        ],
+        "guards": [
+          {
+            "name": "auth",
+            "path": "src/app/core/guards"
+          }
+        ],
+        "interceptors": [
+          {
+            "name": "auth",
+            "path": "src/app/core/interceptors"
+          }
+        ],
+        "directories": [
+          "src/app/core/services",
+          "src/app/core/guards",
+          "src/app/core/interceptors",
+          "src/app/core/providers",
+          "src/app/shared",
+          "src/app/layout/components",
+          "src/app/layout/services",
+          "src/app/layout/models",
+          "src/app/routing",
+          "src/app/blocks"
+        ]
+      }
+    ],
+    "remotes": [
+      {
+        "name": "dashboard",
+        "type": "remote",
+        "directory": "apps/remotes/dashboard",
+        "host": "shell",
+        "config": {
+          "addTailwind": true,
+          "e2eTestRunner": "none",
+          "style": "scss",
+          "unitTestRunner": "none"
+        },
+        "components": [
+          {
+            "name": "dashboardhome",
+            "path": "src/app/features"
+          }
+        ],
+        "directories": [
+          "src/app/features",
+          "src/app/shared",
+          "src/app/core"
+        ]
+      },
+      {
+        "name": "medical",
+        "type": "remote",
+        "directory": "apps/remotes/medical",
+        "host": "shell",
+        "config": {
+          "addTailwind": true,
+          "e2eTestRunner": "none",
+          "style": "scss",
+          "unitTestRunner": "none"
+        },
+        "components": [
+          {
+            "name": "medicalhome",
+            "path": "src/app/features"
+          }
+        ],
+        "directories": [
+          "src/app/features",
+          "src/app/shared",
+          "src/app/core"
+        ]
+      },
+      {
+        "name": "admin",
+        "type": "remote",
+        "directory": "apps/remotes/admin",
+        "host": "shell",
+        "config": {
+          "addTailwind": true,
+          "e2eTestRunner": "none",
+          "style": "scss",
+          "unitTestRunner": "none"
+        },
+        "components": [
+          {
+            "name": "adminhome",
+            "path": "src/app/features"
+          }
+        ],
+        "directories": [
+          "src/app/features",
+          "src/app/shared",
+          "src/app/core"
+        ]
+      }
+    ]
+  },
+  "libraries": {
+    "shared": {
+      "baseDirectory": "libs/shared",
+      "libraries": [
+        {
+          "name": "shared-uikit",
+          "displayName": "UI Kit",
+          "directory": "libs/shared/uikit",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/components",
+            "src/lib/tokens",
+            "src/lib/themes",
+            "src/lib/layouts",
+            "src/lib/primitives"
+          ],
+          "exports": [
+            "components",
+            "tokens",
+            "themes",
+            "layouts",
+            "primitives"
+          ]
+        },
+        {
+          "name": "shared-core",
+          "displayName": "Core",
+          "directory": "libs/shared/core",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/base",
+            "src/lib/interfaces",
+            "src/lib/models",
+            "src/lib/types",
+            "src/lib/utils",
+            "src/lib/constants"
+          ],
+          "exports": [
+            "base",
+            "interfaces",
+            "models",
+            "types",
+            "utils",
+            "constants"
+          ]
+        },
+        {
+          "name": "shared-dataaccess",
+          "displayName": "Data Access",
+          "directory": "libs/shared/dataaccess",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/base",
+            "src/lib/adapters",
+            "src/lib/repositories",
+            "src/lib/state",
+            "src/lib/cache"
+          ],
+          "exports": [
+            "base",
+            "adapters",
+            "repositories",
+            "state",
+            "cache"
+          ]
+        },
+        {
+          "name": "shared-featureplugins",
+          "displayName": "Feature Plugins",
+          "directory": "libs/shared/featureplugins",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/core/engine",
+            "src/lib/core/registry",
+            "src/lib/core/loader",
+            "src/lib/core/factory",
+            "src/lib/core/decorators",
+            "src/lib/blocks/layoutblocks",
+            "src/lib/blocks/contentblocks",
+            "src/lib/blocks/widgetblocks",
+            "src/lib/blocks/formblocks",
+            "src/lib/schemas/blockschemas",
+            "src/lib/schemas/layoutschemas",
+            "src/lib/schemas/validation",
+            "src/lib/builders"
+          ],
+          "exports": [
+            "core",
+            "blocks",
+            "schemas",
+            "builders"
+          ]
+        }
+      ]
+    },
+    "domain": {
+      "baseDirectory": "libs/domain",
+      "libraries": [
+        {
+          "name": "domain-medical",
+          "displayName": "Medical Domain",
+          "directory": "libs/domain/medical",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/entities",
+            "src/lib/valueobjects",
+            "src/lib/aggregates",
+            "src/lib/services",
+            "src/lib/events",
+            "src/lib/ports"
+          ],
+          "exports": [
+            "entities",
+            "valueobjects",
+            "aggregates",
+            "services",
+            "events",
+            "ports"
+          ]
+        },
+        {
+          "name": "domain-user",
+          "displayName": "User Domain",
+          "directory": "libs/domain/user",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/entities",
+            "src/lib/valueobjects",
+            "src/lib/aggregates",
+            "src/lib/services",
+            "src/lib/events",
+            "src/lib/ports"
+          ],
+          "exports": [
+            "entities",
+            "valueobjects",
+            "aggregates",
+            "services",
+            "events",
+            "ports"
+          ]
+        },
+        {
+          "name": "domain-sharedkernel",
+          "displayName": "Shared Kernel",
+          "directory": "libs/domain/sharedkernel",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/entities",
+            "src/lib/valueobjects",
+            "src/lib/aggregates",
+            "src/lib/services",
+            "src/lib/events",
+            "src/lib/ports"
+          ],
+          "exports": [
+            "entities",
+            "valueobjects",
+            "aggregates",
+            "services",
+            "events",
+            "ports"
+          ]
+        }
+      ]
+    },
+    "application": {
+      "baseDirectory": "libs/application",
+      "libraries": [
+        {
+          "name": "application-usecases",
+          "displayName": "Use Cases",
+          "directory": "libs/application/usecases",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/medical",
+            "src/lib/user",
+            "src/lib/shared"
+          ],
+          "exports": [
+            "medical",
+            "user",
+            "shared"
+          ]
+        },
+        {
+          "name": "application-services",
+          "displayName": "Services",
+          "directory": "libs/application/services",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/orchestrators",
+            "src/lib/coordinators",
+            "src/lib/handlers"
+          ],
+          "exports": [
+            "orchestrators",
+            "coordinators",
+            "handlers"
+          ]
+        }
+      ]
+    },
+    "infrastructure": {
+      "baseDirectory": "libs/infrastructure",
+      "libraries": [
+        {
+          "name": "infrastructure-primengadapter",
+          "displayName": "PrimeNG Adapter",
+          "directory": "libs/infrastructure/primengadapter",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/components",
+            "src/lib/factories",
+            "src/lib/transformers",
+            "src/lib/skeleton",
+            "src/lib/themes"
+          ],
+          "exports": [
+            "components",
+            "factories",
+            "transformers",
+            "skeleton",
+            "themes"
+          ]
+        },
+        {
+          "name": "infrastructure-apiadapter",
+          "displayName": "API Adapter",
+          "directory": "libs/infrastructure/apiadapter",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/clients",
+            "src/lib/interceptors",
+            "src/lib/models",
+            "src/lib/mappers"
+          ],
+          "exports": [
+            "clients",
+            "interceptors",
+            "models",
+            "mappers"
+          ]
+        },
+        {
+          "name": "infrastructure-storageadapter",
+          "displayName": "Storage Adapter",
+          "directory": "libs/infrastructure/storageadapter",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/providers",
+            "src/lib/models",
+            "src/lib/strategies"
+          ],
+          "exports": [
+            "providers",
+            "models",
+            "strategies"
+          ]
+        },
+        {
+          "name": "infrastructure-notificationadapter",
+          "displayName": "Notification Adapter",
+          "directory": "libs/infrastructure/notificationadapter",
+          "config": {
+            "buildable": true,
+            "publishable": false
+          },
+          "directories": [
+            "src/lib/providers",
+            "src/lib/models",
+            "src/lib/strategies"
+          ],
+          "exports": [
+            "providers",
+            "models",
+            "strategies"
+          ]
+        }
+      ]
+    }
+  },
+  "tools": {
+    "directories": [
+      "tools/generators",
+      "tools/executors",
+      "tools/scripts",
+      "tools/generators/blockgenerator",
+      "tools/generators/mfegenerator",
+      "tools/generators/domaingenerator"
+    ]
+  },
+  "configs": {
+    "directories": [
+      "configs/webpack",
+      "configs/eslint",
+      "configs/jest"
+    ]
+  }
+}
