@@ -1,0 +1,82 @@
+@if (useSkeletonValue() && showSkeleton()) {
+  <div class="ui-notifications-skeleton">
+    <p-skeleton width="2rem" height="2rem" shape="circle"></p-skeleton>
+  </div>
+} @else {
+  <div [class]="notificationsClasses" (keydown)="onKeyDown($event)">
+    <button
+      #notificationButton
+      pButton
+      pButtonIcon="pi pi-bell"
+      class="ui-notifications__button p-button-text p-button-rounded"
+      (click)="togglePanel($event)"
+      [pTooltip]="unreadCountValue() > 0 ? 'Tienes ' + unreadCountValue() + ' notificaciones sin leer' : 'No hay notificaciones sin leer'"
+      tooltipPosition="bottom"
+    >
+      @if (unreadCountValue() > 0) {
+        <p-badge [value]="unreadCountValue().toString()" severity="danger"></p-badge>
+      }
+    </button>
+
+    @if (showPanelValue()) {
+      <div
+        #notificationPanel
+        class="ui-notifications__panel"
+        [class.ui-notifications__panel--visible]="showPanelValue()"
+      >
+        <div class="ui-notifications__header">
+          <h3 class="ui-notifications__title">Notificaciones</h3>
+          @if (unreadCountValue() > 0) {
+            <button
+              pButton
+              pButtonLabel="Marcar como leídas"
+              class="p-button-text p-button-sm"
+              (click)="onMarkAllRead($event)"
+            ></button>
+          }
+        </div>
+
+        <div class="ui-notifications__list">
+          @if (notificationsValue().length === 0) {
+            <div class="ui-notifications__empty">
+              <i class="pi pi-check-circle"></i>
+              <p>No tienes notificaciones</p>
+            </div>
+          } @else {
+            @for (notification of displayNotifications; track notification.id) {
+              <button
+                class="ui-notifications__item"
+                [class.ui-notifications__item--unread]="!notification.read"
+                [class.ui-notifications__item--info]="notification.type === 'info'"
+                [class.ui-notifications__item--success]="notification.type === 'success'"
+                [class.ui-notifications__item--warning]="notification.type === 'warning'"
+                [class.ui-notifications__item--error]="notification.type === 'error'"
+                (click)="onNotificationClick(notification, $event)"
+                (keydown)="onKeyDown($event, notification)"
+                [attr.aria-label]="notification.title"
+                type="button"
+              >
+                <div class="ui-notifications__item-content">
+                  <h4 class="ui-notifications__item-title">{{ notification.title }}</h4>
+                  <p class="ui-notifications__item-message">{{ notification.message }}</p>
+                  <span class="ui-notifications__item-time">{{ notification.time }}</span>
+                </div>
+              </button>
+            }
+
+            @if (notificationsValue().length > maxDisplayValue()) {
+              <div class="ui-notifications__footer">
+                <button
+                  pButton
+                  pButtonLabel="Ver todas"
+                  class="p-button-text p-button-sm"
+                  (click)="onViewAll($event)"
+                ></button>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

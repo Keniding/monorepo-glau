@@ -1,0 +1,44 @@
+@if (useSkeletonValue() && showSkeleton()) {
+  <div class="ui-user-menu-skeleton">
+    <p-skeleton shape="circle" size="2.5rem" styleClass="ui-user-menu-skeleton__avatar"></p-skeleton>
+    @if (showNameValue()) {
+      <div class="ui-user-menu-skeleton__info">
+        <p-skeleton width="100px" height="1rem" styleClass="ui-user-menu-skeleton__name"></p-skeleton>
+        @if (showRoleValue()) {
+          <p-skeleton width="80px" height="0.75rem" styleClass="ui-user-menu-skeleton__role"></p-skeleton>
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <div [class]="userMenuClasses">
+    <button
+      pButton
+      class="ui-user-menu__trigger p-button-text p-button-rounded"
+      (click)="onProfileClick($event)"
+    >
+      <p-avatar
+        [label]="initials"
+        [image]="userAvatarValue()"
+        shape="circle"
+        size="normal"
+        class="ui-user-menu__avatar"
+      ></p-avatar>
+
+      @if (showNameValue()) {
+        <div class="ui-user-menu__info">
+          <span class="ui-user-menu__name">{{ userNameValue() }}</span>
+          @if (showRoleValue()) {
+            <span class="ui-user-menu__role">{{ userRoleValue() }}</span>
+          }
+        </div>
+      }
+    </button>
+
+    <p-menu #menu
+            [model]="menuItemsValue()"
+            [popup]="true"
+            styleClass="ui-user-menu__dropdown"
+    ></p-menu>
+  </div>
+}

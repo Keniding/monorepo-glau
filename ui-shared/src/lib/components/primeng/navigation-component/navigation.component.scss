@@ -1,0 +1,103 @@
+@use '../../../styles/tokens' as tokens;
+
+.ui-navigation {
+  &--horizontal {
+    width: 100%;
+
+    .ui-navigation__menubar {
+      .p-menubar {
+        background: transparent;
+        border: none;
+        padding: 0;
+
+        .p-menuitem-link {
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+
+  &--vertical {
+    height: 100%;
+
+    .ui-navigation__menubar {
+      .p-menubar {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        padding: 0;
+
+        .p-menubar-root-list {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .p-menuitem {
+          width: 100%;
+        }
+
+        .p-menuitem-link {
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+  }
+
+  // Tamaños
+  &--small {
+    .p-menuitem-text {
+      font-size: 0.875rem;
+    }
+
+    .p-menuitem-icon {
+      font-size: 0.875rem;
+    }
+  }
+
+  &--medium {
+    .p-menuitem-text {
+      font-size: 1rem;
+    }
+
+    .p-menuitem-icon {
+      font-size: 1rem;
+    }
+  }
+
+  &--large {
+    .p-menuitem-text {
+      font-size: 1.125rem;
+    }
+
+    .p-menuitem-icon {
+      font-size: 1.125rem;
+    }
+  }
+
+  // Efecto Glassmorphic
+  &--glassmorphic {
+    .p-menubar {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba(31, 41, 55, 0.7);
+      }
+    }
+
+    .p-menuitem-link:hover {
+      background: rgba(255, 255, 255, 0.9);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba(55, 65, 81, 0.7);
+      }
+    }
+  }
+}
+
+.ui-navigation-skeleton {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

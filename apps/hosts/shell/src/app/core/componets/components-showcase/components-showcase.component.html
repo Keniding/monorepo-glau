@@ -1,0 +1,394 @@
+<div class="components-showcase">
+  <h1>Demostración de Componentes UI</h1>
+  <p>Explora los diferentes componentes y sus variantes disponibles para construir interfaces de usuario.</p>
+
+  <p-tabView>
+    <!-- Tab de Botones -->
+    <p-tabPanel header="Botones">
+      <div class="component-section">
+        <h2>Componente de Botón</h2>
+        <p>Botones personalizables con diferentes variantes, estados y tamaños.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            Variante:
+            <p-selectButton [options]="buttonVariants" [(ngModel)]="selectedButtonVariant" optionLabel="label" optionValue="value"></p-selectButton>
+          </div>
+
+          <div class="control-group">
+            Tamaño:
+            <p-selectButton [options]="buttonSizes" [(ngModel)]="selectedButtonSize" optionLabel="label" optionValue="value"></p-selectButton>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="buttonRounded" [binary]="true" inputId="buttonRounded"></p-checkbox>
+              <label for="buttonRounded">Redondeado</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="buttonOutlined" [binary]="true" inputId="buttonOutlined"></p-checkbox>
+              <label for="buttonOutlined">Contorno</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="buttonFullWidth" [binary]="true" inputId="buttonFullWidth"></p-checkbox>
+              <label for="buttonFullWidth">Ancho completo</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="buttonDisabled" [binary]="true" inputId="buttonDisabled"></p-checkbox>
+              <label for="buttonDisabled">Deshabilitado</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="buttonLoading" [binary]="true" inputId="buttonLoading"></p-checkbox>
+              <label for="buttonLoading">Cargando</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useButtonSkeleton" [binary]="true" inputId="useButtonSkeleton"></p-checkbox>
+              <label for="useButtonSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview">
+          <ui-button
+            [label]="buttonLabel"
+            [icon]="buttonIcon"
+            [variant]="selectedButtonVariant"
+            [size]="selectedButtonSize"
+            [rounded]="buttonRounded"
+            [outlined]="buttonOutlined"
+            [fullWidth]="buttonFullWidth"
+            [disabled]="buttonDisabled"
+            [loading]="buttonLoading"
+            [useSkeleton]="useButtonSkeleton"
+            (clicked)="onButtonClick($event)"
+          ></ui-button>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Brand -->
+    <p-tabPanel header="Brand">
+      <div class="component-section">
+        <h2>Componente de Brand</h2>
+        <p>Muestra el logo y nombre de la aplicación con diferentes tamaños.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            Tamaño del logo:
+            <p-selectButton [options]="brandLogoSizes" [(ngModel)]="selectedBrandLogoSize" optionLabel="label" optionValue="value"></p-selectButton>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="showBrandName" [binary]="true" inputId="showBrandName"></p-checkbox>
+              <label for="showBrandName">Mostrar nombre</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useBrandSkeleton" [binary]="true" inputId="useBrandSkeleton"></p-checkbox>
+              <label for="useBrandSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview">
+          <ui-brand
+            logoUrl="/assets/logo.svg"
+            appName="MedApp"
+            [showName]="showBrandName"
+            [logoSize]="selectedBrandLogoSize"
+            [useSkeleton]="useBrandSkeleton"
+            (brandClicked)="onBrandClick($event)"
+          ></ui-brand>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Navegación -->
+    <p-tabPanel header="Navegación">
+      <div class="component-section">
+        <h2>Componente de Navegación</h2>
+        <p>Menú de navegación con soporte para orientación horizontal y vertical.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            Variante:
+            <p-selectButton [options]="navigationVariants" [(ngModel)]="selectedNavigationVariant" optionLabel="label" optionValue="value"></p-selectButton>
+          </div>
+
+          <div class="control-group">
+            Tamaño:
+            <p-selectButton [options]="navigationSizes" [(ngModel)]="selectedNavigationSize" optionLabel="label" optionValue="value"></p-selectButton>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="navigationGlassmorphic" [binary]="true" inputId="navigationGlassmorphic"></p-checkbox>
+              <label for="navigationGlassmorphic">Efecto Glassmorphic</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useNavigationSkeleton" [binary]="true" inputId="useNavigationSkeleton"></p-checkbox>
+              <label for="useNavigationSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview" [ngClass]="{'vertical-preview': selectedNavigationVariant === 'vertical'}">
+          <ui-navigation
+            [items]="navigationItems"
+            [variant]="selectedNavigationVariant"
+            [size]="selectedNavigationSize"
+            [glassmorphic]="navigationGlassmorphic"
+            [useSkeleton]="useNavigationSkeleton"
+            (itemSelected)="onNavigationItemClick($event)"
+          ></ui-navigation>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Notificaciones -->
+    <p-tabPanel header="Notificaciones">
+      <div class="component-section">
+        <h2>Componente de Notificaciones</h2>
+        <p>Muestra notificaciones con diferentes estados y tipos.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="notificationsGlassmorphic" [binary]="true" inputId="notificationsGlassmorphic"></p-checkbox>
+              <label for="notificationsGlassmorphic">Efecto Glassmorphic</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useNotificationsSkeleton" [binary]="true" inputId="useNotificationsSkeleton"></p-checkbox>
+              <label for="useNotificationsSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview">
+          <ui-notifications
+            [notifications]="notifications"
+            [glassmorphic]="notificationsGlassmorphic"
+            [useSkeleton]="useNotificationsSkeleton"
+            (notificationClicked)="onNotificationClick($event)"
+            (allRead)="onMarkAllNotificationsRead()"
+            (viewAll)="onViewAllNotifications()"
+          ></ui-notifications>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Búsqueda -->
+    <p-tabPanel header="Búsqueda">
+      <div class="component-section">
+        <h2>Componente de Búsqueda</h2>
+        <p>Campo de búsqueda con resultados y estado de carga.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="searchExpanded" [binary]="true" inputId="searchExpanded"></p-checkbox>
+              <label for="searchExpanded">Expandido</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="searchGlassmorphic" [binary]="true" inputId="searchGlassmorphic"></p-checkbox>
+              <label for="searchGlassmorphic">Efecto Glassmorphic</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="searchLoading" [binary]="true" inputId="searchLoading"></p-checkbox>
+              <label for="searchLoading">Cargando</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useSearchSkeleton" [binary]="true" inputId="useSearchSkeleton"></p-checkbox>
+              <label for="useSearchSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview">
+          <ui-search
+            placeholder="Buscar pacientes, citas..."
+            [expanded]="searchExpanded"
+            [glassmorphic]="searchGlassmorphic"
+            [results]="searchResults"
+            [loading]="searchLoading"
+            [useSkeleton]="useSearchSkeleton"
+            (search)="onSearch($event)"
+            (resultSelected)="onSearchResultClick($event)"
+          ></ui-search>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Menú de Usuario -->
+    <p-tabPanel header="Menú de Usuario">
+      <div class="component-section">
+        <h2>Componente de Menú de Usuario</h2>
+        <p>Muestra información del usuario con menú desplegable.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="showUserName" [binary]="true" inputId="showUserName"></p-checkbox>
+              <label for="showUserName">Mostrar nombre</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="showUserRole" [binary]="true" inputId="showUserRole"></p-checkbox>
+              <label for="showUserRole">Mostrar rol</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="userMenuGlassmorphic" [binary]="true" inputId="userMenuGlassmorphic"></p-checkbox>
+              <label for="userMenuGlassmorphic">Efecto Glassmorphic</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="useUserMenuSkeleton" [binary]="true" inputId="useUserMenuSkeleton"></p-checkbox>
+              <label for="useUserMenuSkeleton">Skeleton</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="component-preview">
+          <ui-user-menu
+            userName="Dr. Juan Pérez"
+            userRole="Médico General"
+            [menuItems]="userMenuItems"
+            [showName]="showUserName"
+            [showRole]="showUserRole"
+            [glassmorphic]="userMenuGlassmorphic"
+            [useSkeleton]="useUserMenuSkeleton"
+            (menuItemSelected)="onUserMenuItemClick($event)"
+            (profileClicked)="onProfileClick($event)"
+          ></ui-user-menu>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- Tab de Header Completo -->
+    <p-tabPanel header="Header Completo">
+      <div class="component-section">
+        <h2>Header Completo</h2>
+        <p>Ejemplo de integración de todos los componentes en un header.</p>
+
+        <div class="component-controls">
+          <div class="control-group">
+            <div class="p-field-checkbox">
+              <p-checkbox [(ngModel)]="headerGlassmorphic" [binary]="true" inputId="headerGlassmorphic"></p-checkbox>
+              <label for="headerGlassmorphic">Efecto Glassmorphic</label>
+            </div>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="header-showcase" [class.header-showcase--glassmorphic]="headerGlassmorphic">
+          <div class="header-showcase__container">
+            <!-- Sección izquierda: Brand -->
+            <div class="header-showcase__left">
+              <ui-brand
+                logoUrl="/assets/logo.svg"
+                appName="MedApp"
+                [showName]="true"
+                logoSize="medium"
+                (brandClicked)="onBrandClick($event)"
+              ></ui-brand>
+            </div>
+
+            <!-- Sección central: Navegación principal -->
+            <div class="header-showcase__center">
+              <ui-navigation
+                [items]="navigationItems"
+                variant="horizontal"
+                size="medium"
+                [glassmorphic]="headerGlassmorphic"
+                (itemSelected)="onNavigationItemClick($event)"
+              ></ui-navigation>
+            </div>
+
+            <!-- Sección derecha: Búsqueda, notificaciones y usuario -->
+            <div class="header-showcase__right">
+              <ui-search
+                placeholder="Buscar..."
+                [expanded]="false"
+                [glassmorphic]="headerGlassmorphic"
+                [results]="searchResults"
+                [loading]="searchLoading"
+                (search)="onSearch($event)"
+                (resultSelected)="onSearchResultClick($event)"
+              ></ui-search>
+
+              <ui-notifications
+                [notifications]="notifications"
+                [glassmorphic]="headerGlassmorphic"
+                (notificationClicked)="onNotificationClick($event)"
+                (allRead)="onMarkAllNotificationsRead()"
+                (viewAll)="onViewAllNotifications()"
+              ></ui-notifications>
+
+              <ui-user-menu
+                userName="Dr. Juan Pérez"
+                userRole="Médico General"
+                [menuItems]="userMenuItems"
+                [glassmorphic]="headerGlassmorphic"
+                (menuItemSelected)="onUserMenuItemClick($event)"
+                (profileClicked)="onProfileClick($event)"
+              ></ui-user-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

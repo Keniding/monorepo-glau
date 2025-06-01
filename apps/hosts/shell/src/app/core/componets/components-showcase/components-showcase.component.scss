@@ -1,0 +1,125 @@
+/* components-showcase.component.scss */
+.components-showcase {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+    color: var(--gray-600);
+  }
+}
+
+.component-section {
+  padding: 1rem 0;
+
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: var(--gray-600);
+  }
+}
+
+.component-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .p-field-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.component-preview {
+  padding: 2rem;
+  background: var(--surface-card);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+
+  &.vertical-preview {
+    min-height: 300px;
+    align-items: flex-start;
+
+    ui-navigation {
+      height: 100%;
+    }
+  }
+}
+
+.header-showcase {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  height: 64px;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--gray-800);
+  }
+
+  &--glassmorphic {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    @media (prefers-color-scheme: dark) {
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid rgba(31, 41, 55, 0.18);
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 1.5rem;
+  }
+
+  &__left, &__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+:host ::ng-deep {
+  .p-tabview-panels {
+    padding: 1.5rem 0;
+  }
+
+  .p-tabview .p-tabview-nav {
+    justify-content: center;
+  }
+}

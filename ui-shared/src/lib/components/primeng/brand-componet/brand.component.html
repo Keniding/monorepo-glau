@@ -1,0 +1,15 @@
+@if (useSkeletonValue() && showSkeleton()) {
+  <div class="ui-brand-skeleton">
+    <p-skeleton shape="circle" size="2rem" styleClass="ui-brand-skeleton__logo"></p-skeleton>
+    @if (showNameValue()) {
+      <p-skeleton width="100px" height="1.5rem" styleClass="ui-brand-skeleton__name"></p-skeleton>
+    }
+  </div>
+} @else {
+  <div [class]="brandClasses" (click)="onClick($event)" (keydown)="onClick($event)">
+    <img [src]="logoUrlValue()" alt="Logo" class="ui-brand__logo" />
+    @if (showNameValue()) {
+      <span class="ui-brand__name">{{ appNameValue() }}</span>
+    }
+  </div>
+}

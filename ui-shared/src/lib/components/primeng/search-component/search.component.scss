@@ -1,0 +1,198 @@
+.ui-search {
+  position: relative;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-wrapper {
+    width: 200px;
+    transition: width 0.3s ease;
+  }
+
+  &__input {
+    width: 100%;
+    border-radius: 20px;
+    padding-right: 2.5rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(var(--primary-500-rgb), 0.2);
+    }
+  }
+
+  &__button {
+    margin-left: -2.5rem;
+    z-index: 1;
+  }
+
+  &__popover-container {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 1000;
+    background-color: var(--surface-card);
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    max-width: 90vw;
+    animation: fadeIn 0.15s;
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__results {
+    width: 100%;
+  }
+
+  &__results-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 1px solid var(--gray-700);
+    }
+  }
+
+  &__results-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__results-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  &__loading,
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    color: var(--gray-500);
+
+    i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__result-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 1px solid var(--gray-700);
+    }
+
+    &:hover {
+      background-color: var(--gray-100);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--gray-700);
+      }
+    }
+  }
+
+  &__result-title {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  &__result-description {
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    color: var(--gray-600);
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--gray-300);
+    }
+  }
+
+  &__result-type {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+    background-color: var(--gray-100);
+    color: var(--gray-600);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--gray-700);
+      color: var(--gray-300);
+    }
+  }
+
+  // Estado expandido
+  &--expanded {
+    .ui-search__input-wrapper {
+      width: 300px;
+    }
+  }
+
+  // Efecto Glassmorphic
+  &--glassmorphic {
+    .ui-search__popover-container {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba(31, 41, 55, 0.8);
+        border: 1px solid rgba(31, 41, 55, 0.18);
+      }
+    }
+
+    .ui-search__input {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba(31, 41, 55, 0.7);
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.9);
+
+        @media (prefers-color-scheme: dark) {
+          background: rgba(31, 41, 55, 0.9);
+        }
+      }
+    }
+
+    .ui-search__result-item:hover {
+      background: rgba(255, 255, 255, 0.9);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba(55, 65, 81, 0.7);
+      }
+    }
+  }
+}
+
+.ui-search-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -22,8 +22,8 @@ export type ButtonSize = 'small' | 'medium' | 'large';
   selector: 'ui-button',
   standalone: true,
   imports: [ButtonModule, CommonModule, SkeletonModule],
-  templateUrl: './button-component.html',
-  styleUrl: './button-component.scss',
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent {

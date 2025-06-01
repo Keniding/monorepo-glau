@@ -1,0 +1,70 @@
+@if (useSkeletonValue() && showSkeleton()) {
+  <div class="ui-search-skeleton">
+    <p-skeleton width="200px" height="2.5rem"></p-skeleton>
+  </div>
+} @else {
+  <div [class]="searchClasses" (keydown)="onKeyDown($event)">
+    <div class="ui-search__container">
+      <span class="p-input-icon-left ui-search__input-wrapper">
+        <i class="pi pi-search"></i>
+        <input
+          #searchInput
+          type="text"
+          pInputText
+          [placeholder]="placeholderValue()"
+          [ngModel]="searchTermValue()"
+          (ngModelChange)="searchTermValue.set($event)"
+          class="ui-search__input"
+          (focus)="onInputFocus()"
+        />
+      </span>
+
+      @if (!expandedValue()) {
+        <button
+          pButton
+          pButtonIcon="pi pi-search"
+          class="ui-search__button p-button-text p-button-rounded"
+          (click)="onSearch()"
+        ></button>
+      }
+    </div>
+
+    @if (popoverVisibleValue()) {
+      <div class="ui-search__popover-container">
+        <div class="ui-search__results">
+          <div class="ui-search__results-header">
+            <h3 class="ui-search__results-title">Resultados</h3>
+          </div>
+
+          <div class="ui-search__results-list">
+            @if (loadingValue()) {
+              <div class="ui-search__loading">
+                <i class="pi pi-spin pi-spinner"></i>
+                <p>Buscando...</p>
+              </div>
+            } @else if (resultsValue().length === 0) {
+              <div class="ui-search__empty">
+                <i class="pi pi-search"></i>
+                <p>No se encontraron resultados</p>
+              </div>
+            } @else {
+              @for (result of resultsValue(); track result.id) {
+                <div
+                  class="ui-search__result-item"
+                  (click)="onResultClick(result)"
+                  (keydown)="onResultClick(result)"
+                >
+                  <div class="ui-search__result-content">
+                    <h4 class="ui-search__result-title">{{ result.title }}</h4>
+                    <p class="ui-search__result-description">{{ result.description }}</p>
+                    <span class="ui-search__result-type">{{ result.type }}</span>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}

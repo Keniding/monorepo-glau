@@ -1,0 +1,15 @@
+@if (useSkeletonValue() && showSkeleton()) {
+  <div class="ui-navigation-skeleton">
+    <p-skeleton width="80px" height="1.5rem" styleClass="ui-navigation-skeleton__item"></p-skeleton>
+    <p-skeleton width="80px" height="1.5rem" styleClass="ui-navigation-skeleton__item"></p-skeleton>
+    <p-skeleton width="80px" height="1.5rem" styleClass="ui-navigation-skeleton__item"></p-skeleton>
+    <p-skeleton width="80px" height="1.5rem" styleClass="ui-navigation-skeleton__item"></p-skeleton>
+  </div>
+} @else {
+  <div [class]="navigationClasses">
+    <p-menubar
+      [model]="itemsValue()"
+      styleClass="ui-navigation__menubar"
+    ></p-menubar>
+  </div>
+}

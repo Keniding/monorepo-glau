@@ -1,0 +1,65 @@
+@use '../../../styles/tokens' as tokens;
+
+.ui-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  &__logo {
+    object-fit: contain;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+
+  // Tamaños
+  &--small {
+    .ui-brand__logo {
+      height: 1.5rem;
+      width: auto;
+    }
+
+    .ui-brand__name {
+      font-size: 0.875rem;
+    }
+  }
+
+  &--medium {
+    .ui-brand__logo {
+      height: 2rem;
+      width: auto;
+    }
+
+    .ui-brand__name {
+      font-size: 1rem;
+    }
+  }
+
+  &--large {
+    .ui-brand__logo {
+      height: 2.5rem;
+      width: auto;
+    }
+
+    .ui-brand__name {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.ui-brand-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__name {
+    flex-grow: 0;
+  }
+}
