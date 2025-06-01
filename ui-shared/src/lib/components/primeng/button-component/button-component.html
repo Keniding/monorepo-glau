@@ -6,7 +6,12 @@
     [disabled]="disabledValue()"
     [icon]="iconValue()"
     [loading]="loadingValue()"
+    [severity]="severity"
+    [outlined]="outlinedValue()"
+    [rounded]="roundedValue()"
+    [text]="variantValue() === 'text'"
     [styleClass]="buttonClasses"
+    [fluid]="fullWidthValue()"
     (onClick)="onClick($event)"
   ></p-button>
 }

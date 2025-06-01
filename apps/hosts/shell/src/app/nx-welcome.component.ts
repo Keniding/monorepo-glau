@@ -16,6 +16,7 @@ import { ButtonComponent } from '@shared/ui-shared';
         <ui-button label="Botón advertencia" variant="warning"></ui-button>
         <ui-button label="Botón peligro" variant="danger"></ui-button>
         <ui-button label="Botón info" variant="info"></ui-button>
+        <ui-button label="Botón text" variant="text"></ui-button>
       </div>
 
       <h3>Estados</h3>

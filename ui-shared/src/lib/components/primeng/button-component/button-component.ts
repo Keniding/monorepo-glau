@@ -1,16 +1,27 @@
 import { Component, Input, signal, ViewEncapsulation, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Button } from 'primeng/button';
+import { ButtonModule, ButtonSeverity } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 import { useSkeleton } from '../../../skeletons/skeleton-factory';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'text';
+
+const severityMap: Record<ButtonVariant, ButtonSeverity> = {
+  'primary': 'primary',
+  'secondary': 'secondary',
+  'success': 'success',
+  'warning': 'warn',
+  'danger': 'danger',
+  'info': 'info',
+  'text': 'help'
+};
+
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'ui-button',
   standalone: true,
-  imports: [Button, CommonModule, SkeletonModule],
+  imports: [ButtonModule, CommonModule, SkeletonModule],
   templateUrl: './button-component.html',
   styleUrl: './button-component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -90,15 +101,16 @@ export class ButtonComponent {
     }
   }
 
+  get severity(): ButtonSeverity {
+    return severityMap[this.variantValue()];
+  }
+
   get buttonClasses(): string {
     const classes = [
-      `ui-button--${this.variantValue()}`,
       `ui-button--${this.sizeValue()}`,
     ];
 
     if (this.fullWidthValue()) classes.push('ui-button--full-width');
-    if (this.roundedValue()) classes.push('ui-button--rounded');
-    if (this.outlinedValue()) classes.push('ui-button--outlined');
 
     return classes.join(' ');
   }
