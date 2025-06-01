@@ -94,12 +94,12 @@ export class UserMenuComponent {
 
   get initials(): string {
     const name = this.userNameValue();
-    if (!name) return '';
+    if (!name) return 'U';
 
-    const parts = name.split(' ');
+    const parts = name.trim().split(' ').filter(part => part.length > 0);
     if (parts.length >= 2) {
-      return `${parts[0].charAt(0)}${parts[1].charAt(0)}`;
+      return `${parts[0].charAt(0).toUpperCase()}${parts[parts.length - 1].charAt(0).toUpperCase()}`;
     }
-    return name.charAt(0);
+    return name.charAt(0).toUpperCase();
   }
 }

@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@shared/ui-shared": ["ui-shared/src/public-api.ts"]
+      "@shared/ui-shared": ["ui-shared/src/public-api.ts"],
+      "@shared/tokens": ["ui-shared/src/lib/styles/tokens.scss"],
+      "header/Routes": [
+        "apps/remotes/blocks/header/header/src/app/remote-entry/entry.routes.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

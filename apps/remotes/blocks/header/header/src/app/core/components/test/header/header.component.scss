@@ -1,0 +1,325 @@
+.app-header {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-50) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 4rem;
+    gap: 1rem;
+  }
+
+  &__brand {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+  }
+
+  &__navigation {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    margin: 0 1rem;
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2.5rem;
+  }
+
+  &__search,
+  &__notifications,
+  &__user-menu {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    justify-content: center;
+  }
+
+  &__search {
+    min-width: 200px;
+  }
+
+  &__notifications,
+  &__user-menu {
+    min-width: 2.5rem;
+  }
+}
+
+:host ::ng-deep {
+  // Brand component
+  .ui-brand {
+    height: 2.5rem;
+    align-items: center;
+
+    &__logo {
+      height: 2rem !important;
+      width: 2rem !important;
+    }
+
+    &__name {
+      color: var(--primary-700);
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+  }
+
+  // Navigation component - Glassmorphic mejorado
+  .ui-navigation {
+    height: 2.5rem;
+
+    .p-menubar {
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 0.75rem !important;
+      padding: 0.25rem !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+
+      .p-menubar-root-list {
+        background: transparent !important;
+        border-radius: 0.5rem;
+        padding: 0;
+        gap: 0.25rem;
+        margin: 0;
+      }
+
+      .p-menuitem {
+        .p-menuitem-link {
+          border-radius: 0.5rem !important;
+          padding: 0.5rem 1rem !important;
+          transition: all 0.2s ease;
+          color: var(--gray-700);
+          font-weight: 500;
+
+          &:hover {
+            background: rgba(51, 102, 255, 0.1) !important;
+            color: var(--primary-700) !important;
+            transform: translateY(-1px);
+          }
+
+          &:focus {
+            background: rgba(51, 102, 255, 0.1) !important;
+            color: var(--primary-700) !important;
+            box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.2);
+          }
+        }
+
+        &.p-menuitem-active .p-menuitem-link {
+          background: var(--primary-500) !important;
+          color: white !important;
+        }
+      }
+    }
+  }
+
+  // Search component - CORREGIDO
+  .ui-search {
+    height: 2.5rem;
+
+    &__container {
+      height: 100%;
+      align-items: center;
+    }
+
+    &__input-wrapper {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+
+      .p-inputtext {
+        height: 2.5rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 1.25rem !important;
+        padding: 0 1rem 0 2.5rem !important;
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        transition: all 0.2s ease;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+
+        &:focus {
+          border-color: rgba(51, 102, 255, 0.5) !important;
+          background: rgba(255, 255, 255, 0.95) !important;
+          box-shadow: 0 0 0 3px rgba(51, 102, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+          transform: translateY(-1px);
+        }
+
+        &::placeholder {
+          color: var(--gray-500);
+        }
+      }
+
+      .pi-search {
+        position: absolute;
+        left: 0.75rem;
+        color: var(--gray-500);
+        z-index: 2;
+      }
+    }
+  }
+
+  // Notifications component - BADGE CORREGIDO
+  .ui-notifications {
+    height: 2.5rem;
+
+    &__button {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      border-radius: 0.75rem !important;
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      color: var(--gray-600) !important;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+      position: relative;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-color: rgba(51, 102, 255, 0.3) !important;
+        color: var(--primary-600) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .p-badge {
+        position: absolute !important;
+        top: -4px !important;
+        right: -4px !important;
+        transform: none !important;
+        min-width: 18px !important;
+        height: 18px !important;
+        border-radius: 9px !important;
+        font-size: 0.75rem !important;
+        line-height: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: var(--error-500) !important;
+        color: white !important;
+        border: 2px solid white !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+      }
+    }
+  }
+
+  // User menu component - GLASSMORPHIC MEJORADO
+  .ui-user-menu {
+    height: 2.5rem;
+
+    &__trigger {
+      height: 2.5rem !important;
+      border-radius: 1.25rem !important;
+      padding: 0.25rem !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+
+      &:hover {
+        border-color: rgba(51, 102, 255, 0.3) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+      }
+    }
+
+    &__avatar {
+      .p-avatar {
+        width: 2rem !important;
+        height: 2rem !important;
+        font-size: 0.875rem !important;
+        background: var(--primary-500) !important;
+        color: white !important;
+      }
+    }
+
+    &__info {
+      margin-left: 0.5rem;
+    }
+
+    &__name {
+      color: var(--gray-800) !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      line-height: 1.2;
+    }
+
+    &__role {
+      color: var(--gray-500) !important;
+      font-size: 0.75rem !important;
+      line-height: 1.2;
+    }
+  }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 1024px) {
+  .app-header {
+    &__container {
+      padding: 0.75rem 1rem;
+    }
+
+    &__search {
+      min-width: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-header {
+    &__container {
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    &__navigation {
+      display: none;
+    }
+
+    &__search {
+      min-width: 120px;
+    }
+
+    &__actions {
+      gap: 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app-header {
+    &__brand {
+      .ui-brand__name {
+        display: none;
+      }
+    }
+
+    &__search {
+      min-width: 100px;
+    }
+  }
+}

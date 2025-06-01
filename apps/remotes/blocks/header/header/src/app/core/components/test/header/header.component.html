@@ -1,0 +1,62 @@
+<header class="app-header">
+  <div class="app-header__container">
+    <!-- Brand Section -->
+    <div class="app-header__brand">
+      <ui-brand
+        [logoUrl]="logoUrl"
+        [appName]="appName"
+        [showName]="showBrandName"
+        [logoSize]="brandLogoSize"
+        (brandClicked)="onBrandClick($event)"
+      ></ui-brand>
+    </div>
+
+    <!-- Navigation Section -->
+    <div class="app-header__navigation">
+      <ui-navigation
+        [items]="navigationItems"
+        [variant]="navigationVariant"
+        [size]="navigationSize"
+        [glassmorphic]="navigationGlassmorphic"
+        (itemSelected)="onNavigationItemClick($event)"
+      ></ui-navigation>
+    </div>
+
+    <!-- Actions Section -->
+    <div class="app-header__actions">
+      <!-- Search -->
+      <div class="app-header__search">
+        <ui-search
+          placeholder="Buscar pacientes, citas..."
+          [results]="searchResults"
+          [glassmorphic]="searchGlassmorphic"
+          (search)="onSearch($event)"
+          (resultSelected)="onSearchResultClick($event)"
+        ></ui-search>
+      </div>
+
+      <!-- Notifications -->
+      <div class="app-header__notifications">
+        <ui-notifications
+          [notifications]="notifications"
+          [glassmorphic]="notificationsGlassmorphic"
+          (notificationClicked)="onNotificationClick($event)"
+          (allRead)="onMarkAllNotificationsRead()"
+          (viewAll)="onViewAllNotifications()"
+        ></ui-notifications>
+      </div>
+
+      <!-- User Menu -->
+      <div class="app-header__user-menu">
+        <ui-user-menu
+          [menuItems]="userMenuItems"
+          [userName]="userName"
+          [userRole]="userRole"
+          [userAvatar]="userAvatar"
+          [glassmorphic]="userMenuGlassmorphic"
+          (menuItemSelected)="onUserMenuItemClick($event)"
+        ></ui-user-menu>
+      </div>
+    </div>
+  </div>
+</header>
