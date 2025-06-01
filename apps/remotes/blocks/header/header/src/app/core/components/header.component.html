@@ -1,0 +1,193 @@
+@if (showSkeleton()) {
+  <!-- Skeleton del header -->
+  <header class="header-skeleton">
+    <div class="header-skeleton__container">
+      <div class="header-skeleton__left">
+        <p-skeleton width="180px" height="2rem" styleClass="skeleton-logo"></p-skeleton>
+      </div>
+      <div class="header-skeleton__center">
+        @for (item of skeletonItems; track $index) {
+          <p-skeleton width="80px" height="1.5rem" styleClass="skeleton-nav-item"></p-skeleton>
+        }
+      </div>
+      <div class="header-skeleton__right">
+        <p-skeleton shape="circle" size="2.5rem" styleClass="skeleton-avatar"></p-skeleton>
+      </div>
+    </div>
+  </header>
+} @else {
+  <!-- Header principal -->
+  <header class="glassmorphic-header">
+    <div class="header-container">
+      <!-- Logo y título -->
+      <div class="header-brand">
+        <div class="brand-icon">
+          <i class="pi pi-eye" aria-hidden="true"></i>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">GlaucoVision</h1>
+          <span class="brand-subtitle">Sistema de Detección</span>
+        </div>
+      </div>
+
+      <!-- Navegación principal (desktop) -->
+      <nav class="header-nav" [class.nav-open]="isMenuOpen()">
+        <ul class="nav-list">
+          @for (item of navItems; track item.label) {
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                (click)="onNavClick(item)"
+                [attr.aria-label]="item.label"
+              >
+                <i [class]="item.icon" aria-hidden="true"></i>
+                <span>{{ item.label }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <!-- Acciones de usuario -->
+      <div class="header-actions">
+        <!-- Botón de análisis rápido -->
+        <ui-button
+          label="Nuevo Análisis"
+          icon="pi pi-plus"
+          variant="primary"
+          size="small"
+          [rounded]="true"
+          class="quick-analysis-btn"
+        ></ui-button>
+
+        <!-- Menú de usuario -->
+        <div class="user-menu">
+          <button
+            class="user-avatar"
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="isMenuOpen()"
+            aria-label="Menú de usuario"
+          >
+            <div class="avatar-image">
+              <i class="pi pi-user" aria-hidden="true"></i>
+            </div>
+            <i class="pi pi-chevron-down dropdown-icon"
+               [class.rotated]="isMenuOpen()"
+               aria-hidden="true"></i>
+          </button>
+
+          <!-- Dropdown del usuario -->
+          @if (isMenuOpen()) {
+            <div class="user-dropdown">
+              <div class="dropdown-header">
+                <div class="user-info">
+                  <div class="user-avatar-large">
+                    <i class="pi pi-user" aria-hidden="true"></i>
+                  </div>
+                  <div class="user-details">
+                    <span class="user-name">Dr. Usuario</span>
+                    <span class="user-role">Oftalmólogo</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <ul class="dropdown-menu">
+                @for (action of userActions; track action.label) {
+                  <li>
+                    <button
+                      class="dropdown-item"
+                      (click)="onNavClick(action)"
+                      [class.danger]="action.label === 'Cerrar Sesión'"
+                    >
+                      <i [class]="action.icon" aria-hidden="true"></i>
+                      <span>{{ action.label }}</span>
+                    </button>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Botón de menú móvil -->
+        <button
+          class="mobile-menu-toggle"
+          (click)="toggleMenu()"
+          (keydown.enter)="toggleMenu()"
+          (keydown.space)="toggleMenu()"
+          [attr.aria-expanded]="isMenuOpen()"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navegación móvil -->
+    @if (isMenuOpen()) {
+      <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+          @for (item of navItems; track item.label) {
+            <li class="mobile-nav-item">
+              <button
+                class="mobile-nav-link"
+                (click)="onNavClick(item)"
+              >
+                <i [class]="item.icon" aria-hidden="true"></i>
+                <span>{{ item.label }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+
+        <div class="mobile-nav-divider"></div>
+
+        <div class="mobile-user-section">
+          <div class="mobile-user-info">
+            <div class="mobile-user-avatar">
+              <i class="pi pi-user" aria-hidden="true"></i>
+            </div>
+            <div class="mobile-user-details">
+              <span class="mobile-user-name">Dr. Usuario</span>
+              <span class="mobile-user-role">Oftalmólogo</span>
+            </div>
+          </div>
+
+          <ul class="mobile-user-actions">
+            @for (action of userActions; track action.label) {
+              <li>
+                <button
+                  class="mobile-user-action"
+                  (click)="onNavClick(action)"
+                  [class.danger]="action.label === 'Cerrar Sesión'"
+                >
+                  <i [class]="action.icon" aria-hidden="true"></i>
+                  <span>{{ action.label }}</span>
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+  </header>
+
+  <!-- Overlay accesible para cerrar menú en móvil -->
+  @if (isMenuOpen()) {
+    <button
+      class="mobile-overlay"
+      (click)="toggleMenu()"
+      (keydown.enter)="toggleMenu()"
+      (keydown.space)="toggleMenu()"
+      (keydown.escape)="toggleMenu()"
+      aria-label="Cerrar menú de navegación"
+      tabindex="0"
+    >
+      <span class="sr-only">Presiona para cerrar el menú</span>
+    </button>
+  }
+}
