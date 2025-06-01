@@ -1,86 +1,140 @@
 /* ----------------------------------------------------
-   REGLA 60-30-10 (colores)
+   SISTEMA DE TOKENS DE DISEÑO - PALETA PASTEL
    ---------------------------------------------------- */
 
 /* 1) Colores Primarios (60%) — Azul Médico */
-$primary-50:   #F8FAFF;  // Fondo claro
-$primary-100:  #E8F2FF;  // Secciones
-$primary-500:  #2E5BBA;  // Azul médico confiable
-$primary-700:  #1E3A8A;  // Azul oscuro
+$primary-50:   #F0F7FF;  // Fondo muy claro
+$primary-100:  #E0EEFF;  // Fondo claro
+$primary-200:  #C7DDFF;  // Bordes claros
+$primary-300:  #99BEFF;  // Elementos secundarios
+$primary-400:  #6694FF;  // Elementos destacados
+$primary-500:  #3366FF;  // Color principal
+$primary-600:  #2952CC;  // Hover
+$primary-700:  #1E3A99;  // Activo
+$primary-800:  #152A73;  // Texto sobre fondos claros
+$primary-900:  #0C1A4D;  // Texto sobre fondos blancos
 
 /* 2) Colores Neutros (30%) — Gris Neutro */
 $gray-50:   #F9FAFB;  // Fondo alternativo
-$gray-100:  #E5E7EB;  // Bordes / separadores
+$gray-100:  #F3F4F6;  // Bordes claros
+$gray-200:  #E5E7EB;  // Bordes / separadores
+$gray-300:  #D1D5DB;  // Bordes destacados
+$gray-400:  #9CA3AF;  // Texto deshabilitado
 $gray-500:  #6B7280;  // Texto neutro
+$gray-600:  #4B5563;  // Texto destacado
+$gray-700:  #374151;  // Texto principal
+$gray-800:  #1F2937;  // Títulos
 $gray-900:  #111827;  // Texto oscuro
 
-/* 3) Colores de Estado (10%) — Sistema de Estados */
-$success: #10B981;   // Éxito / Normal
-$warning: #F59E0B;   // Advertencia
-$error:   #EF4444;   // Peligro / Crítico
-$info:    #3B82F6;   // Información
+/* 3) Colores de Estado (10%) — Sistema de Estados con variantes */
+// Success - Verde pastel
+$success-50:  #ECFDF5;
+$success-100: #D1FAE5;
+$success-500: #10B981;  // Base
+$success-600: #059669;
+$success-700: #047857;
 
-// Button
-$button-padding: 0.75rem 1.5rem;
-$button-border-radius: 0.375rem;
+// Warning - Amarillo pastel
+$warning-50:  #FFFBEB;
+$warning-100: #FEF3C7;
+$warning-500: #F59E0B;  // Base
+$warning-600: #D97706;
+$warning-700: #B45309;
+
+// Error - Rojo pastel
+$error-50:  #FEF2F2;
+$error-100: #FEE2E2;
+$error-500: #EF4444;  // Base
+$error-600: #DC2626;
+$error-700: #B91C1C;
+
+// Info - Azul claro pastel
+$info-50:  #EFF6FF;
+$info-100: #DBEAFE;
+$info-500: #3B82F6;  // Base
+$info-600: #2563EB;
+$info-700: #1D4ED8;
+
+/* Configuración de botones */
+$button-padding-sm: 0.5rem 1rem;
+$button-padding-md: 0.75rem 1.5rem;
+$button-padding-lg: 1rem 2rem;
+$button-border-radius-sm: 0.25rem;
+$button-border-radius-md: 0.375rem;
+$button-border-radius-lg: 0.5rem;
+$button-font-size-sm: 0.875rem;
+$button-font-size-md: 1rem;
+$button-font-size-lg: 1.125rem;
 
 /* ----------------------------------------------------
-   Exportar como CSS Custom Properties (para que puedan usarse en tiempo de ejecución)
+   Exportar como CSS Custom Properties
    ---------------------------------------------------- */
 :root {
   /* Primarios 60% */
   --primary-50:  #{$primary-50};
   --primary-100: #{$primary-100};
+  --primary-200: #{$primary-200};
+  --primary-300: #{$primary-300};
+  --primary-400: #{$primary-400};
   --primary-500: #{$primary-500};
+  --primary-600: #{$primary-600};
   --primary-700: #{$primary-700};
+  --primary-800: #{$primary-800};
+  --primary-900: #{$primary-900};
 
   /* Neutros 30% */
   --gray-50:   #{$gray-50};
   --gray-100:  #{$gray-100};
+  --gray-200:  #{$gray-200};
+  --gray-300:  #{$gray-300};
+  --gray-400:  #{$gray-400};
   --gray-500:  #{$gray-500};
+  --gray-600:  #{$gray-600};
+  --gray-700:  #{$gray-700};
+  --gray-800:  #{$gray-800};
   --gray-900:  #{$gray-900};
 
-  /* Estados 10% */
-  --success: #{$success};
-  --warning: #{$warning};
-  --error:   #{$error};
-  --info:    #{$info};
+  /* Estados 10% - Success */
+  --success-50:  #{$success-50};
+  --success-100: #{$success-100};
+  --success-500: #{$success-500};
+  --success-600: #{$success-600};
+  --success-700: #{$success-700};
+
+  /* Estados 10% - Warning */
+  --warning-50:  #{$warning-50};
+  --warning-100: #{$warning-100};
+  --warning-500: #{$warning-500};
+  --warning-600: #{$warning-600};
+  --warning-700: #{$warning-700};
+
+  /* Estados 10% - Error */
+  --error-50:  #{$error-50};
+  --error-100: #{$error-100};
+  --error-500: #{$error-500};
+  --error-600: #{$error-600};
+  --error-700: #{$error-700};
+
+  /* Estados 10% - Info */
+  --info-50:  #{$info-50};
+  --info-100: #{$info-100};
+  --info-500: #{$info-500};
+  --info-600: #{$info-600};
+  --info-700: #{$info-700};
 
   /* Backgrounds sugeridos */
   --bg-primary:    #{$primary-50};   /* 60% dominante */
   --bg-secondary:  #FFFFFF;          /* Blanco para áreas grandes */
   --bg-accent:     #{$primary-100};  /* 10% de acento */
 
-  --button-padding: #{$button-padding};
-  --button-border-radius: #{$button-border-radius};
+  /* Configuración de botones */
+  --button-padding-sm: #{$button-padding-sm};
+  --button-padding-md: #{$button-padding-md};
+  --button-padding-lg: #{$button-padding-lg};
+  --button-border-radius-sm: #{$button-border-radius-sm};
+  --button-border-radius-md: #{$button-border-radius-md};
+  --button-border-radius-lg: #{$button-border-radius-lg};
+  --button-font-size-sm: #{$button-font-size-sm};
+  --button-font-size-md: #{$button-font-size-md};
+  --button-font-size-lg: #{$button-font-size-lg};
 }
-
-/* Ejemplo de mixins / utilitarias de espaciado (sistema de 8px) */
-$spacings: (
-  1: 8px,
-  2: 16px,
-  3: 24px,
-  4: 32px,
-  6: 48px,
-  8: 64px
-);
-
-@each $key, $val in $spacings {
-  .m-#{$key} {
-    margin: $val !important;
-  }
-  .p-#{$key} {
-    padding: $val !important;
-  }
-}
-
-/* Tipografía base sugerida */
-$font-family-sans: 'Inter', sans-serif;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-
-/* Ejemplo de variables tipográficas */
-$h1-size: 2rem;
-$h2-size: 1.5rem;
-$body-size: 1rem;

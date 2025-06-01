@@ -1,6 +1,12 @@
-<p-button
-  [label]="labelValue()"
-  [disabled]="disabledValue()"
-  [icon]="iconValue()"
-  styleClass="ui-button"
-></p-button>
+@if (useSkeletonValue() && showSkeleton()) {
+  <p-skeleton [height]="skeletonHeightValue()" [width]="skeletonWidthValue()" styleClass="ui-button-skeleton"></p-skeleton>
+} @else {
+  <p-button
+    [label]="labelValue()"
+    [disabled]="disabledValue()"
+    [icon]="iconValue()"
+    [loading]="loadingValue()"
+    [styleClass]="buttonClasses"
+    (onClick)="onClick($event)"
+  ></p-button>
+}
