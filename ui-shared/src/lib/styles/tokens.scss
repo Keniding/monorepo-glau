@@ -20,6 +20,10 @@ $warning: #F59E0B;   // Advertencia
 $error:   #EF4444;   // Peligro / Crítico
 $info:    #3B82F6;   // Información
 
+// Button
+$button-padding: 0.75rem 1.5rem;
+$button-border-radius: 0.375rem;
+
 /* ----------------------------------------------------
    Exportar como CSS Custom Properties (para que puedan usarse en tiempo de ejecución)
    ---------------------------------------------------- */
@@ -46,6 +50,9 @@ $info:    #3B82F6;   // Información
   --bg-primary:    #{$primary-50};   /* 60% dominante */
   --bg-secondary:  #FFFFFF;          /* Blanco para áreas grandes */
   --bg-accent:     #{$primary-100};  /* 10% de acento */
+
+  --button-padding: #{$button-padding};
+  --button-border-radius: #{$button-border-radius};
 }
 
 /* Ejemplo de mixins / utilitarias de espaciado (sistema de 8px) */

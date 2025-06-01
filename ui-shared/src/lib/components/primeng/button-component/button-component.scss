@@ -1,0 +1,19 @@
+.ui-button.p-button {
+  background: var(--primary-500) !important;
+  border: 1px solid var(--primary-700) !important;
+  color: white !important;
+  padding: var(--button-padding) !important;
+  border-radius: var(--button-border-radius) !important;
+  transition: background-color 0.2s, border-color 0.2s !important;
+
+  &:hover {
+    background: var(--primary-700) !important;
+    border-color: var(--primary-700) !important;
+  }
+
+  &:disabled {
+    background: var(--gray-100) !important;
+    border-color: var(--gray-100) !important;
+    color: var(--gray-500) !important;
+  }
+}
