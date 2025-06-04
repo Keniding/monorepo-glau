@@ -14,12 +14,28 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
     "paths": {
       "@shared/ui-shared": ["ui-shared/src/public-api.ts"],
+      "footer/Routes": [
+        "apps/remotes/blocks/footer/footer/src/app/remote-entry/entry.routes.ts"
+      ],
+      "footer/Component": [
+        "apps/remotes/blocks/footer/footer/src/app/remote-entry/component.ts"
+      ],
       "header/Routes": [
         "apps/remotes/blocks/header/header/src/app/remote-entry/entry.routes.ts"
+      ],
+      "header/Component": [
+        "apps/remotes/blocks/header/header/src/app/remote-entry/component.ts"
       ]
     }
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "apps/shell/src/remotes.d.ts"
+  ],
   "exclude": ["node_modules", "tmp"]
 }

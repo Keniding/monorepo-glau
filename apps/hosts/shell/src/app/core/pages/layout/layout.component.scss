@@ -1,0 +1,858 @@
+/* ============================================
+ LAYOUT PRINCIPAL CON TOKENS PASTEL
+ ============================================ */
+
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--layout-background);
+  // color: var(--text-color);
+}
+
+/* ============================================
+ LOADING STATE CON DISEÑO PASTEL
+ ============================================ */
+.layout-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  // background: var(--bg-primary);
+  backdrop-filter: blur(10px);
+
+  .loading-content {
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface-card);
+    border-radius: 1rem;
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-2);
+
+    h3 {
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-color-secondary);
+      margin: 0;
+    }
+  }
+}
+
+/* ============================================
+ HEADER SECTION CON TOKENS PASTEL
+ ============================================ */
+.layout-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--layout-header-height);
+
+  .remote-header-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    height: var(--layout-header-height-mobile);
+  }
+}
+
+/* Fallback Header con Tokens Pastel */
+.fallback-header {
+  background: var(--layout-surface-overlay);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-2);
+  height: 100%;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 100%;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      height: auto;
+      min-height: var(--layout-header-height-mobile);
+    }
+  }
+
+  .fallback-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--button-border-radius-md);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--bg-accent);
+      transform: translateY(-1px);
+    }
+
+    .brand-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      border-radius: var(--button-border-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-2);
+
+      i {
+        font-size: 1.25rem;
+        color: white;
+      }
+    }
+
+    .brand-info {
+      .brand-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        color: var(--text-color);
+      }
+
+      .brand-tagline {
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+
+  .fallback-nav {
+    display: flex;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    ::ng-deep .p-button {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-color);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: var(--bg-accent);
+        border-color: var(--primary-200);
+        color: var(--primary-600);
+        transform: translateY(-1px);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px var(--primary-200);
+      }
+    }
+  }
+
+  .fallback-actions {
+    display: flex;
+    gap: 0.75rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    ::ng-deep .p-button {
+      border-radius: var(--button-border-radius-md);
+      padding: var(--button-padding-sm);
+      font-size: var(--button-font-size-sm);
+      transition: all 0.2s ease;
+
+      &.p-button-outlined {
+        border-color: var(--primary-300);
+        color: var(--primary-600);
+
+        &:hover {
+          background: var(--primary-50);
+          border-color: var(--primary-400);
+          transform: translateY(-1px);
+        }
+      }
+
+      &.p-button-success {
+        background: var(--success-500);
+        border-color: var(--success-500);
+
+        &:hover {
+          background: var(--success-600);
+          border-color: var(--success-600);
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-2);
+        }
+      }
+    }
+  }
+}
+
+/* ============================================
+ MAIN CONTENT CON TOKENS PASTEL
+ ============================================ */
+.layout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--layout-header-height);
+
+  @media (max-width: 768px) {
+    margin-top: var(--layout-header-height-mobile);
+  }
+
+  .main-content {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 1.5rem;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+}
+
+/* Welcome Content con Tokens Pastel */
+.welcome-content {
+  .welcome-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--surface-card);
+    border-radius: 1rem;
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-1);
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: var(--primary-600); // Fallback
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: var(--text-color-secondary);
+      margin: 0 0 2rem 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem auto;
+
+    ::ng-deep .action-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--button-border-radius-lg);
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-3);
+        border-color: var(--primary-200);
+
+        .card-header i {
+          transform: scale(1.1);
+          color: var(--primary-500);
+        }
+      }
+
+      .card-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1rem 1rem;
+        background: var(--bg-accent);
+
+        i {
+          font-size: 2.5rem;
+          color: var(--primary-400);
+          margin-bottom: 1rem;
+          transition: all 0.3s ease;
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin: 0;
+          color: var(--text-color);
+        }
+      }
+
+      .p-card-content {
+        text-align: center;
+        color: var(--text-color-secondary);
+        padding: 1rem 1.5rem;
+      }
+
+      .p-card-footer {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        background: var(--surface-hover);
+      }
+    }
+  }
+
+  .features-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--surface-card);
+    border-radius: 1rem;
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-1);
+
+    h3 {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--text-color);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+
+      .feature-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--bg-accent);
+        border-radius: var(--button-border-radius-lg);
+        border: 1px solid var(--surface-border);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-2);
+          border-color: var(--primary-200);
+
+          .feature-icon {
+            transform: scale(1.1);
+            color: var(--primary-500);
+          }
+        }
+
+        .feature-icon {
+          font-size: 2rem;
+          color: var(--primary-400);
+          margin-bottom: 1rem;
+          display: block;
+          transition: all 0.3s ease;
+        }
+
+        h4 {
+          font-size: 1.125rem;
+          font-weight: 600;
+          margin: 0 0 0.5rem 0;
+          color: var(--text-color);
+        }
+
+        p {
+          font-size: 0.875rem;
+          color: var(--text-color-secondary);
+          margin: 0;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+/* ============================================
+ FOOTER SECTION CON TOKENS PASTEL
+ ============================================ */
+.layout-footer {
+  margin-top: auto;
+
+  .remote-footer-container {
+    width: 100%;
+  }
+}
+
+/* Fallback Footer con Tokens Pastel */
+.fallback-footer {
+  background: var(--layout-surface-overlay);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--surface-border);
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 1rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1rem 0.75rem;
+    }
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .footer-brand {
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      .brand-icon {
+        width: 2rem;
+        height: 2rem;
+        background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+        border-radius: var(--button-border-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 1rem;
+          color: white;
+        }
+      }
+
+      .brand-info {
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin: 0;
+          color: var(--text-color);
+        }
+
+        span {
+          font-size: 0.75rem;
+          color: var(--text-color-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: var(--text-color-secondary);
+      margin: 0 0 1.5rem 0;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.5rem;
+
+      ::ng-deep .p-button {
+        background: var(--bg-accent);
+        border-color: var(--surface-border);
+        color: var(--text-color-secondary);
+
+        &:hover {
+          background: var(--primary-100);
+          border-color: var(--primary-200);
+          color: var(--primary-600);
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .footer-section {
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        color: var(--text-color);
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            font-size: 0.875rem;
+            text-decoration: none;
+            color: var(--text-color-secondary);
+            transition: all 0.2s ease;
+
+            &:hover {
+              color: var(--primary-600);
+              transform: translateX(2px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--surface-border);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: var(--text-color-secondary);
+      margin: 0;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        font-size: 0.875rem;
+        text-decoration: none;
+        color: var(--text-color-secondary);
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: var(--primary-600);
+        }
+      }
+    }
+  }
+}
+
+/* ============================================
+ DEBUG PANEL CON TOKENS PASTEL
+ ============================================ */
+.debug-info {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  min-width: 250px;
+
+  ::ng-deep .p-panel {
+    background: var(--surface-overlay);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--button-border-radius-md);
+    box-shadow: var(--shadow-3);
+
+    .p-panel-header {
+      background: var(--bg-accent);
+      border: none;
+      color: var(--text-color);
+      font-size: 0.875rem;
+      border-radius: var(--button-border-radius-md) var(--button-border-radius-md) 0 0;
+    }
+
+    .p-panel-content {
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+    }
+  }
+
+  .debug-content {
+    .debug-status {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.875rem;
+
+        span {
+          color: var(--text-color-secondary);
+        }
+      }
+    }
+
+    ::ng-deep .p-button {
+      background: var(--primary-500);
+      border-color: var(--primary-500);
+      border-radius: var(--button-border-radius-sm);
+
+      &:hover {
+        background: var(--primary-600);
+        border-color: var(--primary-600);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-2);
+      }
+    }
+  }
+}
+
+/* ============================================
+ RESPONSIVE ADICIONAL CON TOKENS PASTEL
+ ============================================ */
+@media (max-width: 480px) {
+  .welcome-content .quick-actions {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .fallback-header__container {
+    padding: 0.75rem;
+  }
+
+  .fallback-footer__container {
+    padding: 1rem 0.75rem 0.5rem;
+  }
+
+  .features-section .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+ ANIMACIONES CON TOKENS PASTEL
+ ============================================ */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.pulse-primary {
+  animation: pulsePrimary 2s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulsePrimary {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(51, 102, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(51, 102, 255, 0);
+  }
+}
+
+/* ============================================
+ UTILIDADES PARA DEBUGGING
+ ============================================ */
+.debug-layout {
+  .layout-container {
+    border: 2px solid var(--error-500);
+  }
+
+  .layout-header {
+    border: 2px solid var(--info-500);
+  }
+
+  .layout-main {
+    border: 2px solid var(--success-500);
+  }
+
+  .layout-footer {
+    border: 2px solid var(--warning-500);
+  }
+}
+
+/* ============================================
+ COMPONENTES ADICIONALES CON TOKENS PASTEL
+ ============================================ */
+
+/* Botones personalizados con tokens */
+.btn-primary-pastel {
+  background: var(--primary-500);
+  border: 1px solid var(--primary-500);
+  color: white;
+  padding: var(--button-padding-md);
+  border-radius: var(--button-border-radius-md);
+  font-size: var(--button-font-size-md);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--primary-600);
+    border-color: var(--primary-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-2);
+  }
+
+  &:active {
+    background: var(--primary-700);
+    border-color: var(--primary-700);
+    transform: translateY(0);
+  }
+}
+
+.btn-success-pastel {
+  background: var(--success-500);
+  border: 1px solid var(--success-500);
+  color: white;
+  padding: var(--button-padding-md);
+  border-radius: var(--button-border-radius-md);
+  font-size: var(--button-font-size-md);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--success-600);
+    border-color: var(--success-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-2);
+  }
+}
+
+/* Cards con tokens pastel */
+.card-pastel {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--button-border-radius-lg);
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-3);
+    border-color: var(--primary-200);
+  }
+
+  .card-header-pastel {
+    background: var(--bg-accent);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--surface-border);
+    border-radius: var(--button-border-radius-lg) var(--button-border-radius-lg) 0 0;
+
+    h3 {
+      margin: 0;
+      color: var(--text-color);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+
+  .card-content-pastel {
+    padding: 1.5rem;
+    color: var(--text-color-secondary);
+  }
+
+  .card-footer-pastel {
+    padding: 1rem 1.5rem;
+    background: var(--surface-hover);
+    border-top: 1px solid var(--surface-border);
+    border-radius: 0 0 var(--button-border-radius-lg) var(--button-border-radius-lg);
+  }
+}
+
+/* Alerts con tokens pastel */
+.alert-success-pastel {
+  background: var(--success-50);
+  border: 1px solid var(--success-200);
+  color: var(--success-700);
+  padding: 1rem;
+  border-radius: var(--button-border-radius-md);
+  border-left: 4px solid var(--success-500);
+}
+
+.alert-warning-pastel {
+  background: var(--warning-50);
+  border: 1px solid var(--warning-200);
+  color: var(--warning-700);
+  padding: 1rem;
+  border-radius: var(--button-border-radius-md);
+  border-left: 4px solid var(--warning-500);
+}
+
+.alert-error-pastel {
+  background: var(--error-50);
+  border: 1px solid var(--error-200);
+  color: var(--error-700);
+  padding: 1rem;
+  border-radius: var(--button-border-radius-md);
+  border-left: 4px solid var(--error-500);
+}
+
+.alert-info-pastel {
+  background: var(--info-50);
+  border: 1px solid var(--info-200);
+  color: var(--info-700);
+  padding: 1rem;
+  border-radius: var(--button-border-radius-md);
+  border-left: 4px solid var(--info-500);
+}

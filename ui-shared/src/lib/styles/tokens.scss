@@ -1,6 +1,6 @@
 /* ----------------------------------------------------
-   SISTEMA DE TOKENS DE DISEÑO - PALETA PASTEL
-   ---------------------------------------------------- */
+ IMPORTAR SISTEMA DE TOKENS DE DISEÑO - PALETA PASTEL
+ ---------------------------------------------------- */
 
 /* 1) Colores Primarios (60%) — Azul Médico */
 $primary-50:   #F0F7FF;  // Fondo muy claro
@@ -67,10 +67,10 @@ $button-font-size-md: 1rem;
 $button-font-size-lg: 1.125rem;
 
 /* ----------------------------------------------------
-   Exportar como CSS Custom Properties
-   ---------------------------------------------------- */
+ VARIABLES CSS PERSONALIZADAS CON TOKENS PASTEL
+ ---------------------------------------------------- */
 :root {
-  /* Primarios 60% */
+  /* === COLORES PRIMARIOS (60%) === */
   --primary-50:  #{$primary-50};
   --primary-100: #{$primary-100};
   --primary-200: #{$primary-200};
@@ -82,7 +82,7 @@ $button-font-size-lg: 1.125rem;
   --primary-800: #{$primary-800};
   --primary-900: #{$primary-900};
 
-  /* Neutros 30% */
+  /* === COLORES NEUTROS (30%) === */
   --gray-50:   #{$gray-50};
   --gray-100:  #{$gray-100};
   --gray-200:  #{$gray-200};
@@ -94,40 +94,69 @@ $button-font-size-lg: 1.125rem;
   --gray-800:  #{$gray-800};
   --gray-900:  #{$gray-900};
 
-  /* Estados 10% - Success */
+  /* === COLORES DE ESTADO (10%) === */
   --success-50:  #{$success-50};
   --success-100: #{$success-100};
   --success-500: #{$success-500};
   --success-600: #{$success-600};
   --success-700: #{$success-700};
 
-  /* Estados 10% - Warning */
   --warning-50:  #{$warning-50};
   --warning-100: #{$warning-100};
   --warning-500: #{$warning-500};
   --warning-600: #{$warning-600};
   --warning-700: #{$warning-700};
 
-  /* Estados 10% - Error */
   --error-50:  #{$error-50};
   --error-100: #{$error-100};
   --error-500: #{$error-500};
   --error-600: #{$error-600};
   --error-700: #{$error-700};
 
-  /* Estados 10% - Info */
   --info-50:  #{$info-50};
   --info-100: #{$info-100};
   --info-500: #{$info-500};
   --info-600: #{$info-600};
   --info-700: #{$info-700};
 
-  /* Backgrounds sugeridos */
-  --bg-primary:    #{$primary-50};   /* 60% dominante */
-  --bg-secondary:  #FFFFFF;          /* Blanco para áreas grandes */
-  --bg-accent:     #{$primary-100};  /* 10% de acento */
+  /* === BACKGROUNDS APLICANDO LA REGLA 60-30-10 === */
+  --bg-primary:    #{$primary-50};   /* 60% dominante - fondo principal */
+  --bg-secondary:  #FFFFFF;          /* 30% neutro - áreas grandes */
+  --bg-accent:     #{$primary-100};  /* 10% acento - elementos destacados */
 
-  /* Configuración de botones */
+  /* === MAPEO A VARIABLES DE PRIMENG === */
+  --primary-color: #{$primary-500};
+  --primary-color-text: white;
+  --surface-0: #{$gray-50};
+  --surface-50: #{$gray-100};
+  --surface-100: #{$gray-200};
+  --surface-200: #{$gray-300};
+  --surface-300: #{$gray-400};
+  --surface-400: #{$gray-500};
+  --surface-500: #{$gray-600};
+  --surface-600: #{$gray-700};
+  --surface-700: #{$gray-800};
+  --surface-800: #{$gray-900};
+  --surface-900: #{$gray-900};
+
+  --surface-ground: #{$gray-50};
+  --surface-section: white;
+  --surface-card: white;
+  --surface-overlay: rgba(255, 255, 255, 0.95);
+  --surface-border: #{$gray-200};
+  --surface-hover: #{$gray-100};
+
+  --text-color: #{$gray-800};
+  --text-color-secondary: #{$gray-600};
+  --text-color-inverse: white;
+
+  /* === SOMBRAS SUAVES PASTEL === */
+  --shadow-1: 0 1px 3px rgba(51, 102, 255, 0.08), 0 1px 2px rgba(51, 102, 255, 0.06);
+  --shadow-2: 0 4px 6px rgba(51, 102, 255, 0.1), 0 2px 4px rgba(51, 102, 255, 0.06);
+  --shadow-3: 0 10px 15px rgba(51, 102, 255, 0.1), 0 4px 6px rgba(51, 102, 255, 0.05);
+  --shadow-4: 0 20px 25px rgba(51, 102, 255, 0.1), 0 10px 10px rgba(51, 102, 255, 0.04);
+
+  /* === CONFIGURACIÓN DE BOTONES === */
   --button-padding-sm: #{$button-padding-sm};
   --button-padding-md: #{$button-padding-md};
   --button-padding-lg: #{$button-padding-lg};
@@ -137,4 +166,172 @@ $button-font-size-lg: 1.125rem;
   --button-font-size-sm: #{$button-font-size-sm};
   --button-font-size-md: #{$button-font-size-md};
   --button-font-size-lg: #{$button-font-size-lg};
+
+  /* === LAYOUT ESPECÍFICO === */
+  --layout-header-height: 4rem;
+  --layout-header-height-mobile: 3.5rem;
+  --layout-background: linear-gradient(135deg, #{$primary-50} 0%, #{$gray-50} 100%);
+  --layout-surface-overlay: rgba(255, 255, 255, 0.95);
+}
+
+/* === MODO OSCURO CON TOKENS PASTEL === */
+[data-theme="dark"],
+.dark-theme {
+  --primary-color: #{$primary-400};
+  --surface-0: #{$gray-900};
+  --surface-50: #{$gray-800};
+  --surface-100: #{$gray-700};
+  --surface-200: #{$gray-600};
+  --surface-300: #{$gray-500};
+  --surface-400: #{$gray-400};
+  --surface-500: #{$gray-300};
+  --surface-600: #{$gray-200};
+  --surface-700: #{$gray-100};
+  --surface-800: #{$gray-50};
+  --surface-900: white;
+
+  --surface-ground: #{$gray-900};
+  --surface-section: #{$gray-800};
+  --surface-card: #{$gray-800};
+  --surface-overlay: rgba(31, 41, 55, 0.95);
+  --surface-border: #{$gray-700};
+  --surface-hover: #{$gray-700};
+
+  --text-color: #{$gray-100};
+  --text-color-secondary: #{$gray-400};
+  --text-color-inverse: #{$gray-900};
+
+  --layout-background: linear-gradient(135deg, #{$gray-900} 0%, #{$gray-800} 100%);
+  --layout-surface-overlay: rgba(31, 41, 55, 0.95);
+
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-2: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-3: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-4: 0 20px 25px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+ OVERRIDE DE PRIMENG CON TOKENS PASTEL
+ ============================================ */
+
+/* PrimeNG Button overrides */
+::ng-deep .p-button {
+  border-radius: var(--button-border-radius-md);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &.p-button-sm {
+    padding: var(--button-padding-sm);
+    font-size: var(--button-font-size-sm);
+    border-radius: var(--button-border-radius-sm);
+  }
+
+  &.p-button-lg {
+    padding: var(--button-padding-lg);
+    font-size: var(--button-font-size-lg);
+    border-radius: var(--button-border-radius-lg);
+  }
+}
+
+/* PrimeNG Card overrides */
+::ng-deep .p-card {
+  border-radius: var(--button-border-radius-lg);
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-2);
+  }
+
+  .p-card-header {
+    background: var(--bg-accent);
+    border-radius: var(--button-border-radius-lg) var(--button-border-radius-lg) 0 0;
+  }
+}
+
+/* PrimeNG Panel overrides */
+::ng-deep .p-panel {
+  border-radius: var(--button-border-radius-md);
+  box-shadow: var(--shadow-1);
+
+  .p-panel-header {
+    background: var(--bg-accent);
+    border-radius: var(--button-border-radius-md) var(--button-border-radius-md) 0 0;
+  }
+}
+
+/* PrimeNG InputText overrides */
+::ng-deep .p-inputtext {
+  border-radius: var(--button-border-radius-sm);
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 2px var(--primary-200);
+  }
+}
+
+/* ============================================
+ CLASES UTILITARIAS CON TOKENS PASTEL
+ ============================================ */
+
+/* Backgrounds */
+.bg-primary-50 { background-color: var(--primary-50); }
+.bg-primary-100 { background-color: var(--primary-100); }
+.bg-primary-500 { background-color: var(--primary-500); }
+
+/* Text colors */
+.text-primary-500 { color: var(--primary-500); }
+.text-primary-600 { color: var(--primary-600); }
+.text-gray-600 { color: var(--gray-600); }
+.text-gray-800 { color: var(--gray-800); }
+
+/* Borders */
+.border-primary-200 { border-color: var(--primary-200); }
+.border-gray-200 { border-color: var(--gray-200); }
+
+/* Shadows */
+.shadow-1 { box-shadow: var(--shadow-1); }
+.shadow-2 { box-shadow: var(--shadow-2); }
+.shadow-3 { box-shadow: var(--shadow-3); }
+.shadow-4 { box-shadow: var(--shadow-4); }
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.hover-shadow {
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-2);
+  }
+}
+
+/* ============================================
+ PRINT STYLES
+ ============================================ */
+@media print {
+  .layout-header,
+  .layout-footer,
+  .debug-info {
+    display: none;
+  }
+
+  .layout-main {
+    margin-top: 0;
+  }
+
+  .layout-container {
+    background: white;
+    color: black;
+  }
 }

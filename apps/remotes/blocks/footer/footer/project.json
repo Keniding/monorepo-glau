@@ -1,0 +1,138 @@
+{
+  "name": "footer",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/remotes/blocks/footer/footer/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/remotes/blocks/footer/footer",
+        "index": "apps/remotes/blocks/footer/footer/src/index.html",
+        "main": "apps/remotes/blocks/footer/footer/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/remotes/blocks/footer/footer/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/remotes/blocks/footer/footer/public"
+          }
+        ],
+        "styles": ["apps/remotes/blocks/footer/footer/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/remotes/blocks/footer/footer/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "baseHref": "/",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "30kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/remotes/blocks/footer/footer/webpack.prod.config.ts"
+          }
+        },
+        "xampp": {
+          "baseHref": "/remotes/blocks/footer/footer/",
+          "deployUrl": "/remotes/blocks/footer/footer/",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "30kb"
+            }
+          ],
+          "outputHashing": "all",
+          "optimization": true,
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "sourceMap": false,
+          "namedChunks": false,
+          "customWebpackConfig": {
+            "path": "apps/remotes/blocks/footer/footer/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "footer:build:production"
+        },
+        "development": {
+          "buildTarget": "footer:build:development"
+        },
+        "xampp": {
+          "buildTarget": "footer:build:xampp"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "footer:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "footer:build",
+        "port": 4202,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "footer:build:development"
+        },
+        "production": {
+          "buildTarget": "footer:build:production"
+        },
+        "xampp": {
+          "buildTarget": "footer:build:xampp"
+        }
+      }
+    }
+  }
+}

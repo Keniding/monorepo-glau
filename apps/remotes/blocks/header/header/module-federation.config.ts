@@ -3,8 +3,9 @@ import { ModuleFederationConfig } from '@nx/module-federation';
 const config: ModuleFederationConfig = {
   name: 'header',
   exposes: {
-    './Routes':
-      'apps/remotes/blocks/header/header/src/app/remote-entry/entry.routes.ts',
+    './Routes': 'apps/remotes/blocks/header/header/src/app/remote-entry/entry.routes.ts',
+    './Component': 'apps/remotes/blocks/header/header/src/app/remote-entry/component.ts',
+    './Module': 'apps/remotes/blocks/header/header/src/app/remote-entry/entry.component.ts',
   },
 };
 

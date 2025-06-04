@@ -1,0 +1,194 @@
+@if (showSkeleton()) {
+  <!-- Skeleton del footer -->
+  <footer class="footer-skeleton">
+    <div class="footer-skeleton__container">
+      <div class="footer-skeleton__grid">
+        @for (item of skeletonItems; track $index) {
+          <div class="footer-skeleton__section">
+            <p-skeleton width="120px" height="1.5rem" styleClass="skeleton-title"></p-skeleton>
+            <div class="footer-skeleton__links">
+              @for (link of skeletonItems; track $index) {
+                <p-skeleton width="100px" height="1rem" styleClass="skeleton-link"></p-skeleton>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <div class="footer-skeleton__bottom">
+        <p-skeleton width="200px" height="1rem" styleClass="skeleton-copyright"></p-skeleton>
+        <div class="footer-skeleton__social">
+          @for (item of skeletonItems; track $index) {
+            <p-skeleton shape="circle" size="2rem" styleClass="skeleton-social"></p-skeleton>
+          }
+        </div>
+      </div>
+    </div>
+  </footer>
+} @else {
+  <!-- Footer principal -->
+  <footer class="glassmorphic-footer">
+    <div class="footer-container">
+      <!-- Sección principal del footer -->
+      <div class="footer-main">
+        <!-- Información de la empresa -->
+        <div class="footer-brand">
+          <div class="brand-header">
+            <div class="brand-icon">
+              <i class="pi pi-eye" aria-hidden="true"></i>
+            </div>
+            <div class="brand-info">
+              <h2 class="brand-title">{{ companyInfo.name }}</h2>
+              <span class="brand-tagline">Detección Inteligente</span>
+            </div>
+          </div>
+
+          <p class="brand-description">{{ companyInfo.description }}</p>
+
+          <div class="company-details">
+            <div class="detail-item">
+              <i class="pi pi-map-marker" aria-hidden="true"></i>
+              <span>{{ companyInfo.address }}</span>
+            </div>
+            <div class="detail-item">
+              <i class="pi pi-phone" aria-hidden="true"></i>
+              <a href="tel:{{ companyInfo.phone }}">{{ companyInfo.phone }}</a>
+            </div>
+            <div class="detail-item">
+              <i class="pi pi-envelope" aria-hidden="true"></i>
+              <a href="mailto:{{ companyInfo.email }}">{{ companyInfo.email }}</a>
+            </div>
+          </div>
+
+          <!-- Certificaciones -->
+          <div class="certifications">
+            <span class="certifications-title">Certificaciones:</span>
+            <div class="certifications-list">
+              @for (cert of companyInfo.certifications; track cert) {
+                <span class="certification-badge">{{ cert }}</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Enlaces por secciones -->
+        <div class="footer-links">
+          @for (section of footerSections; track section.title) {
+            <div class="footer-section">
+              <h3 class="section-title">{{ section.title }}</h3>
+              <ul class="section-links">
+                @for (link of section.links; track link.label) {
+                  <li class="section-link-item">
+                    <button
+                      class="section-link"
+                      (click)="onFooterLinkClick(link)"
+                      [attr.aria-label]="link.label"
+                    >
+                      @if (link.icon) {
+                        <i [class]="link.icon" aria-hidden="true"></i>
+                      }
+                      <span>{{ link.label }}</span>
+                      @if (link.external) {
+                        <i class="pi pi-external-link external-icon" aria-hidden="true"></i>
+                      }
+                    </button>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <div class="newsletter-header">
+            <h3 class="newsletter-title">Mantente Actualizado</h3>
+            <p class="newsletter-description">
+              Recibe las últimas actualizaciones sobre avances en detección de glaucoma y nuevas funcionalidades.
+            </p>
+          </div>
+
+          <div class="newsletter-form">
+            <div class="newsletter-input-group">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="tu@email.com"
+                [value]="newsletterEmail()"
+                (input)="onEmailChange($event)"
+                aria-label="Ingresa tu email para el newsletter"
+              >
+              <ui-button
+                label="Suscribirse"
+                icon="pi pi-send"
+                variant="primary"
+                size="small"
+                [rounded]="true"
+                (click)="onNewsletterSubmit()"
+                [disabled]="!newsletterEmail()"
+              ></ui-button>
+            </div>
+            <p class="newsletter-disclaimer">
+              Al suscribirte, aceptas recibir comunicaciones de {{ companyInfo.name }}.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separador -->
+      <div class="footer-divider"></div>
+
+      <!-- Pie del footer -->
+      <div class="footer-bottom">
+        <!-- Copyright y legal -->
+        <div class="footer-legal">
+          <div class="copyright">
+            <span>&copy; {{ companyInfo.founded }}-{{ getCurrentYear() }} {{ companyInfo.name }}.</span>
+            <span>Todos los derechos reservados.</span>
+          </div>
+
+          <nav class="legal-links" aria-label="Enlaces legales">
+            <ul class="legal-list">
+              @for (legal of legalLinks; track legal.label) {
+                <li class="legal-item">
+                  <button
+                    class="legal-link"
+                    (click)="onFooterLinkClick(legal)"
+                  >
+                    {{ legal.label }}
+                  </button>
+                </li>
+              }
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-social">
+          <span class="social-title">Síguenos:</span>
+          <div class="social-links">
+            @for (social of socialLinks; track social.platform) {
+              <button
+                class="social-link"
+                (click)="onSocialClick(social)"
+                [attr.aria-label]="social.ariaLabel"
+                [title]="social.platform"
+              >
+                <i [class]="social.icon" aria-hidden="true"></i>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Información adicional -->
+      <div class="footer-extra">
+        <div class="footer-disclaimer">
+          <p>
+            <strong>Aviso Médico:</strong> {{ companyInfo.name }} es una herramienta de apoyo diagnóstico.
+            Siempre consulte con un profesional médico calificado para el diagnóstico y tratamiento definitivo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+}

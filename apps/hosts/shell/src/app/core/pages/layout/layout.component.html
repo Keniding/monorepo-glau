@@ -1,0 +1,332 @@
+<div class="layout-container">
+  <!-- Toast para notificaciones -->
+  <p-toast position="top-right"></p-toast>
+
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="layout-loading">
+      <div class="loading-content">
+        <p-progressSpinner
+          strokeWidth="3"
+          fill="transparent"
+          animationDuration="1s">
+        </p-progressSpinner>
+        <h3>Cargando GlaucoVision</h3>
+        <p>Inicializando microfrontends...</p>
+      </div>
+    </div>
+  } @else {
+    <!-- Header Section -->
+    <header class="layout-header">
+      @if (headerLoaded()) {
+        <!-- Header remoto cargado -->
+        <div class="remote-header-container">
+          <ng-container *ngComponentOutlet="headerComponent"></ng-container>
+        </div>
+      } @else {
+        <!-- Fallback Header con PrimeNG -->
+        <div class="fallback-header">
+          <div class="fallback-header__container">
+            <div class="fallback-brand">
+              <div class="brand-icon">
+                <i class="pi pi-eye" aria-hidden="true"></i>
+              </div>
+              <div class="brand-info">
+                <h1 class="brand-title">GlaucoVision</h1>
+                <span class="brand-tagline">Sistema de Detección</span>
+              </div>
+            </div>
+
+            <nav class="fallback-nav">
+              <p-button
+                label="Inicio"
+                icon="pi pi-home"
+                [text]="true"
+                (onClick)="navigateToWelcome()">
+              </p-button>
+              <p-button
+                label="Análisis"
+                icon="pi pi-chart-line"
+                [text]="true">
+              </p-button>
+              <p-button
+                label="Historial"
+                icon="pi pi-history"
+                [text]="true">
+              </p-button>
+              <p-button
+                label="Reportes"
+                icon="pi pi-file-pdf"
+                [text]="true">
+              </p-button>
+            </nav>
+
+            <div class="fallback-actions">
+              <p-button
+                label="Iniciar Sesión"
+                icon="pi pi-sign-in"
+                severity="secondary"
+                [outlined]="true">
+              </p-button>
+              <p-button
+                label="Nuevo Análisis"
+                icon="pi pi-plus"
+                severity="success">
+              </p-button>
+            </div>
+          </div>
+        </div>
+      }
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="layout-main" role="main">
+      <div class="main-content">
+
+        <!-- Contenido de bienvenida con PrimeNG -->
+        <div class="welcome-content">
+          <div class="welcome-hero">
+            <h2>Bienvenido a GlaucoVision</h2>
+            <p>Sistema avanzado de detección de glaucoma mediante inteligencia artificial</p>
+
+            <div class="quick-actions">
+              <p-card
+                header="Biblioteca de Componentes"
+                [style]="{'cursor': 'pointer'}"
+                (click)="navigateToLibrary()"
+                styleClass="action-card">
+                <ng-template pTemplate="header">
+                  <div class="card-header">
+                    <i class="pi pi-palette"></i>
+                    <h3>Biblioteca de Componentes</h3>
+                  </div>
+                </ng-template>
+                <p>Explora nuestros componentes UI reutilizables</p>
+                <ng-template pTemplate="footer">
+                  <p-tag value="UI/UX" severity="info"></p-tag>
+                </ng-template>
+              </p-card>
+
+              <p-card
+                header="Página de Inicio"
+                [style]="{'cursor': 'pointer'}"
+                (click)="navigateToWelcome()"
+                styleClass="action-card">
+                <ng-template pTemplate="header">
+                  <div class="card-header">
+                    <i class="pi pi-home"></i>
+                    <h3>Página de Inicio</h3>
+                  </div>
+                </ng-template>
+                <p>Información principal sobre la aplicación</p>
+                <ng-template pTemplate="footer">
+                  <p-tag value="Inicio" severity="success"></p-tag>
+                </ng-template>
+              </p-card>
+
+              <p-card
+                header="Vista Header"
+                [style]="{'cursor': 'pointer'}"
+                (click)="navigateToHeader()"
+                styleClass="action-card">
+                <ng-template pTemplate="header">
+                  <div class="card-header">
+                    <i class="pi pi-window-maximize"></i>
+                    <h3>Vista Header</h3>
+                  </div>
+                </ng-template>
+                <p>Componente de cabecera del sistema</p>
+                <ng-template pTemplate="footer">
+                  <p-tag
+                    [value]="headerLoaded() ? 'Cargado' : 'Error'"
+                    [severity]="headerLoaded() ? 'success' : 'danger'">
+                  </p-tag>
+                </ng-template>
+              </p-card>
+
+              <p-card
+                header="Vista Footer"
+                [style]="{'cursor': 'pointer'}"
+                (click)="navigateToFooter()"
+                styleClass="action-card">
+                <ng-template pTemplate="header">
+                  <div class="card-header">
+                    <i class="pi pi-window-minimize"></i>
+                    <h3>Vista Footer</h3>
+                  </div>
+                </ng-template>
+                <p>Componente de pie de página del sistema</p>
+                <ng-template pTemplate="footer">
+                  <p-tag
+                    [value]="footerLoaded() ? 'Cargado' : 'Error'"
+                    [severity]="footerLoaded() ? 'success' : 'danger'">
+                  </p-tag>
+                </ng-template>
+              </p-card>
+            </div>
+
+            <p-divider></p-divider>
+
+            <!-- Sección de características -->
+            <div class="features-section">
+              <h3>Características Principales</h3>
+              <div class="features-grid">
+                <div class="feature-item">
+                  <i class="pi pi-eye feature-icon"></i>
+                  <h4>Detección IA</h4>
+                  <p>Análisis automatizado con inteligencia artificial</p>
+                </div>
+                <div class="feature-item">
+                  <i class="pi pi-chart-line feature-icon"></i>
+                  <h4>Reportes Avanzados</h4>
+                  <p>Informes detallados y visualizaciones</p>
+                </div>
+                <div class="feature-item">
+                  <i class="pi pi-shield feature-icon"></i>
+                  <h4>Seguridad</h4>
+                  <p>Datos protegidos con estándares médicos</p>
+                </div>
+                <div class="feature-item">
+                  <i class="pi pi-mobile feature-icon"></i>
+                  <h4>Multiplataforma</h4>
+                  <p>Acceso desde cualquier dispositivo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="layout-footer">
+      @if (footerLoaded()) {
+        <!-- Footer remoto cargado -->
+        <div class="remote-footer-container">
+          <ng-container *ngComponentOutlet="footerComponent"></ng-container>
+        </div>
+      } @else {
+        <!-- Fallback Footer con PrimeNG -->
+        <div class="fallback-footer">
+          <div class="fallback-footer__container">
+            <div class="footer-content">
+              <div class="footer-brand">
+                <div class="brand-header">
+                  <div class="brand-icon">
+                    <i class="pi pi-eye"></i>
+                  </div>
+                  <div class="brand-info">
+                    <h3>GlaucoVision</h3>
+                    <span>Detección Inteligente</span>
+                  </div>
+                </div>
+                <p>Sistema avanzado de detección de glaucoma mediante IA</p>
+
+                <div class="social-links">
+                  <p-button
+                    icon="pi pi-twitter"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="info">
+                  </p-button>
+                  <p-button
+                    icon="pi pi-linkedin"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="info">
+                  </p-button>
+                  <p-button
+                    icon="pi pi-github"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="info">
+                  </p-button>
+                </div>
+              </div>
+
+              <div class="footer-links">
+                <div class="footer-section">
+                  <h4>Producto</h4>
+                  <ul>
+                    <li><a href="/features">Características</a></li>
+                    <li><a href="/ai-analysis">Análisis IA</a></li>
+                    <li><a href="/reports">Reportes</a></li>
+                    <li><a href="/pricing">Precios</a></li>
+                  </ul>
+                </div>
+
+                <div class="footer-section">
+                  <h4>Empresa</h4>
+                  <ul>
+                    <li><a href="/about">Acerca de</a></li>
+                    <li><a href="/team">Equipo</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/careers">Carreras</a></li>
+                  </ul>
+                </div>
+
+                <div class="footer-section">
+                  <h4>Soporte</h4>
+                  <ul>
+                    <li><a href="/help">Centro de Ayuda</a></li>
+                    <li><a href="/docs">Documentación</a></li>
+                    <li><a href="/api">API</a></li>
+                    <li><a href="/status">Estado del Sistema</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <p-divider></p-divider>
+
+            <div class="footer-bottom">
+              <p>&copy; 2024 GlaucoVision. Todos los derechos reservados.</p>
+              <div class="footer-bottom-links">
+                <a href="/privacy">Privacidad</a>
+                <a href="/terms">Términos</a>
+                <a href="/cookies">Cookies</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </footer>
+
+    <!-- Debug Panel (solo en desarrollo) -->
+    @if (isDevMode()) {
+      <div class="debug-info">
+        <p-panel header="Debug - Microfrontends" [toggleable]="true" [collapsed]="true">
+          <div class="debug-content">
+            <div class="debug-status">
+              <div class="status-row">
+                <span>Header:</span>
+                <p-tag
+                  [value]="headerLoaded() ? 'Cargado' : 'Error'"
+                  [severity]="headerLoaded() ? 'success' : 'danger'">
+                </p-tag>
+              </div>
+              <div class="status-row">
+                <span>Footer:</span>
+                <p-tag
+                  [value]="footerLoaded() ? 'Cargado' : 'Error'"
+                  [severity]="footerLoaded() ? 'success' : 'danger'">
+                </p-tag>
+              </div>
+            </div>
+
+            <p-divider></p-divider>
+
+            <p-button
+              label="Recargar Módulos"
+              icon="pi pi-refresh"
+              severity="info"
+              size="small"
+              [style]="{'width': '100%'}"
+              (onClick)="reloadRemoteModules()">
+            </p-button>
+          </div>
+        </p-panel>
+      </div>
+    }
+  }
+</div>
