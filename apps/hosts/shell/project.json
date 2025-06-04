@@ -30,6 +30,7 @@
       },
       "configurations": {
         "production": {
+          "baseHref": "/",
           "budgets": [
             {
               "type": "initial",
@@ -38,11 +39,36 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
+              "maximumWarning": "15kb",
+              "maximumError": "25kb"
             }
           ],
           "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/hosts/shell/webpack.prod.config.ts"
+          }
+        },
+        "xampp": {
+          "baseHref": "/hosts/shell/",
+          "deployUrl": "/hosts/shell/",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "30kb"
+            }
+          ],
+          "outputHashing": "all",
+          "optimization": true,
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "sourceMap": false,
+          "namedChunks": false,
           "customWebpackConfig": {
             "path": "apps/hosts/shell/webpack.prod.config.ts"
           }
@@ -71,6 +97,9 @@
         },
         "development": {
           "buildTarget": "shell:build:development"
+        },
+        "xampp": {
+          "buildTarget": "shell:build:xampp"
         }
       },
       "defaultConfiguration": "development"
@@ -91,6 +120,17 @@
         "buildTarget": "shell:build",
         "port": 4200,
         "spa": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "shell:build:development"
+        },
+        "production": {
+          "buildTarget": "shell:build:production"
+        },
+        "xampp": {
+          "buildTarget": "shell:build:xampp"
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ import { ComponentsShowcaseComponent } from './core/componets/components-showcas
 export const appRoutes: Route[] = [
   {
     path: 'header',
-    loadChildren: () => import('header/Routes').then((m) => m!.remoteRoutes),
+    loadChildren: () => import('header/Routes').then((m) => m.remoteRoutes),
   },
   {
     path: '',
