@@ -17,11 +17,13 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'footer',
-    loadChildren: () => import('footer/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      import('footer/Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'header',
-    loadChildren: () => import('header/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      import('header/Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'NxWelcome',

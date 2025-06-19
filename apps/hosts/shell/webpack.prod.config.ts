@@ -1,5 +1,27 @@
 import { withModuleFederation } from '@nx/module-federation/angular';
 import config from './module-federation.config';
+import * as dotenv from 'dotenv';
+import * as path from 'node:path';
+
+const loadEnvironment = () => {
+  const nodeEnv = process.env['NODE_ENV'] || 'development';
+  const envFile = `.env.${nodeEnv}`;
+
+  dotenv.config({ path: path.resolve(process.cwd(), envFile) });
+
+  console.log(`Loading environment: ${nodeEnv}`);
+  console.log(`Environment file: ${envFile}`);
+};
+
+loadEnvironment();
+
+const getRemoteBaseUrl = () => {
+  const baseUrl = process.env['REMOTE_BASE_URL'] || 'http://localhost/remotes/blocks';
+  console.log(`Remote base URL: ${baseUrl}`);
+  return baseUrl;
+};
+
+const baseUrl = getRemoteBaseUrl();
 
 /**
  * DTS Plugin is disabled in Nx Workspaces as Nx already provides Typing support for Module Federation
@@ -21,8 +43,8 @@ export default withModuleFederation(
      */
 
     remotes: [
-      ['header', 'http://localhost/remotes/blocks/header/header/remoteEntry.mjs'],
-      ['footer', 'http://localhost/remotes/blocks/footer/footer/remoteEntry.mjs'],
+      ['header', `${baseUrl}/header/header/remoteEntry.mjs`],
+      ['footer', `${baseUrl}/footer/footer/remoteEntry.mjs`],
     ]
   },
   { dts: false }

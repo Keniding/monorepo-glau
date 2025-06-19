@@ -48,6 +48,29 @@
             "path": "apps/hosts/shell/webpack.prod.config.ts"
           }
         },
+        "staging": {
+          "baseHref": "/hosts/shell/",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "15kb",
+              "maximumError": "25kb"
+            }
+          ],
+          "outputHashing": "all",
+          "optimization": true,
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "sourceMap": false,
+          "customWebpackConfig": {
+            "path": "apps/hosts/shell/webpack.prod.config.ts"
+          }
+        },
         "xampp": {
           "baseHref": "/hosts/shell/",
           "deployUrl": "/hosts/shell/",

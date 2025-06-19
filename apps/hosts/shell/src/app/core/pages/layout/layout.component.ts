@@ -30,7 +30,7 @@ import { PanelModule } from 'primeng/panel';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-  private destroy$ = new Subject<void>();
+  private readonly destroy$ = new Subject<void>();
 
 // Estados de carga de los microfrontends
   headerLoaded = signal(false);
@@ -43,8 +43,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   footerComponent: any = null;
 
   constructor(
-    private router: Router,
-    private messageService: MessageService
+    private readonly router: Router,
+    private readonly messageService: MessageService
   ) {}
 
   async ngOnInit() {
